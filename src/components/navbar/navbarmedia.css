@@ -1,0 +1,38 @@
+@media screen and (max-width: 1440px) and (max-height <= 1440px) {
+  .nav-container {
+    transform: translate3d(49rem, 3rem, 1rem) !important;
+  }
+  .hero .hero-blob img {
+    width: 45rem !important;
+    transform: translate3d(2rem, 4rem, 10px) !important;
+  }
+  .hero .hero-blob svg {
+    transform: translate3d(64rem, -5rem, 10px) !important;
+  }
+  .hero .container {
+    width: 89% !important;
+  }
+  .hero .container input {
+    width: 12%;
+    transform: translateX(-3rem);
+  }
+  .hero .container select {
+    transform: translateX(-3rem) !important;
+    width: 13% !important;
+  }
+  .hero .container .hero1 {
+    transform: translate3d(-1rem, 0px, 10px) !important;
+  }
+  .hero .container line {
+    margin-left: 42rem !important;
+  }
+  .hero .container a {
+    transform: translate3d(78px, 0px, 10px) !important;
+  }
+  .hero .calOne {
+    transform: translate3d(58rem, 41rem, 1rem) !important;
+  }
+  .hero .calTwo {
+    transform: translate3d(64rem, 41rem, 1rem) !important;
+  }
+}/*# sourceMappingURL=navbarmedia.css.map */

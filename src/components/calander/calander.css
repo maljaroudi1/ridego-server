@@ -1,0 +1,187 @@
+:root {
+  --main-color-orange:#FD8800;
+  --orange:#FFDAB0;
+  --orange0:#FFC98A;
+  --orange1:#DB8E36;
+  --orange2:#9B5300;
+  --orange4:#f80;
+  --footer:#171717;
+  --red:rgb(255, 42, 42);
+  --box-shadow1: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  --box-shadow2:rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.book-btn {
+  border-radius: 5px;
+  background-color: orange;
+  width: 8rem;
+  height: 3rem;
+  color: white !important;
+  font-weight: 900;
+  border: 0px;
+  box-shadow: var(--box-shadow1);
+  cursor: pointer;
+}
+
+.postiton-btn {
+  margin-top: 24rem;
+  position: absolute;
+  margin-left: 8rem;
+}
+
+.container {
+  width: 80%;
+  position: absolute;
+  justify-content: center;
+  align-items: baseline;
+  display: flex;
+  height: 9rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  transform: translate3d(7rem, 36rem, 1rem);
+  z-index: 12;
+  border-radius: 5px;
+  background-color: white;
+}
+.container .Toastify {
+  transform: translate3d(55rem, -37rem, 1rem);
+}
+.container input {
+  width: 13.6%;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  transform: translateX(-48em);
+  border: 1px var(--main-color-orange) solid;
+  border-radius: 5px;
+  outline-color: var(--main-color-orange);
+  position: absolute;
+}
+.container .car-input {
+  transform: translate3d(-23.5rem, 5rem, 1rem) !important;
+}
+.container .email {
+  transform: translateX(-23.6rem) !important;
+}
+.container select {
+  padding: 1rem;
+  border-radius: 5px;
+  width: 16%;
+  margin-top: 0rem;
+  margin-left: 1rem;
+  transform: translate3d(-40rem, 5rem, 1rem);
+  background-color: white;
+  cursor: pointer;
+  border: 1px var(--main-color-orange) solid;
+  outline-color: var(--main-color-orange);
+  position: absolute;
+}
+.container .pickup-time {
+  transform: translate3d(-7rem, 1rem, 1rem) !important;
+}
+.container .return-time {
+  transform: translate3d(15.5rem, 1rem, 1rem) !important;
+}
+.container line {
+  height: 1%;
+  width: 6.5%;
+  margin-left: 9.5rem;
+  background-color: lightgray;
+  position: absolute;
+  transform: rotate(90deg);
+  margin-top: 4.5rem;
+}
+.container .calTwoOutput {
+  transform: translate3d(-1.8rem, -7.7rem, 1rem) !important;
+  width: 174% !important;
+}
+.container .date-output {
+  position: absolute;
+  box-shadow: var(--box-shadow1);
+  width: 159%;
+  height: 72%;
+  transform: translate3d(-2rem, -7.7rem, 1rem);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.container .date-output .output-date {
+  text-align: center;
+  color: white;
+}
+.container .hero-calander {
+  z-index: 1;
+}
+.container .hero-calander .output-date {
+  text-align: center;
+}
+.container .hero-calander h6 {
+  font-size: 1rem;
+}
+.container .hero1 {
+  cursor: pointer;
+  transform: translate3d(-9rem, 54px, 10px);
+  position: absolute;
+}
+.container .hero2 {
+  cursor: pointer;
+  transform: translate3d(13rem, 54px, 10px);
+  position: absolute;
+}
+.container .play-btn {
+  transform: rotate(210deg);
+  color: #FD8800;
+  font-size: 0.5rem;
+  position: absolute;
+  margin-top: -3.4rem;
+  margin-left: 6.5rem;
+}
+.container .play1 {
+  margin-left: 6.8rem;
+}
+.container .play-btn-active {
+  transform: rotate(30deg) !important;
+}
+.container .book-btn {
+  border-radius: 5px;
+  background-color: orange;
+  width: 9rem;
+  height: 4rem;
+  color: white !important;
+  font-weight: 900;
+  border: 0px;
+  box-shadow: var(--box-shadow1);
+  cursor: pointer;
+}
+.container a {
+  transform: translate3d(42rem, 43px, 10px);
+}
+
+.calOne {
+  display: none;
+  position: absolute;
+  transform: translate3d(40.1rem, 46rem, 1rem);
+  z-index: 1;
+}
+
+.calTwo {
+  display: none;
+  position: absolute;
+  transform: translate3d(62.1rem, 46rem, 1rem);
+  z-index: 1;
+}
+
+.calendar-active {
+  display: block !important;
+}
+
+.calander-icon {
+  color: #FD8800;
+  position: absolute;
+  margin-top: 2.4rem;
+  margin-left: -1.5rem;
+}
+
+.calander-active {
+  display: block !important;
+}/*# sourceMappingURL=calander.css.map */

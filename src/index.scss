@@ -1,0 +1,23 @@
+*{
+    font-family: 'Roboto Slab', serif;
+}
+body{
+    overflow-x: hidden;
+}
+
+
+.footer-car-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 210rem;
+    display: flex;
+    align-items: end;
+}
+
+.seperation-container{
+    display: block;
+}
+.not-active{
+    display: none !important;
+}

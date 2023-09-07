@@ -1,0 +1,131 @@
+
+:root{
+    --main-color-orange:#FD8800;
+    --box-shadow1: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+
+.hero{
+    overflow: hidden;
+    .logo{
+       
+        position: absolute;
+  
+        img{
+            width: 22%;
+            transform: translate3d(2rem, 5.1rem, 1rem);
+        }
+    }
+    .hero-blob{
+        svg{
+            width: 64%;
+            transform: translate3d(64rem, -22rem, 10px);
+        }
+        img{
+            position: absolute;
+            width: 56rem;
+            transform: translate3d(-318px, -145px, 10px);
+        }
+    }
+    .hero-text-container{
+        transform: translate3d(7rem, 26rem, -1rem);
+        h1{
+            text-transform: uppercase;
+            font-size: 3.5rem;
+        }
+        p{
+            
+        }
+    }
+    .hero-btn{    
+        transform: translate3d(7rem, 27rem, 1rem) !important;
+    
+        .sell-btn{
+            border-radius: 5px;
+            background-color: white;
+            width: 8rem;
+            height: 3rem;
+            color: #FD8800;
+            font-weight: 900;
+            border: 0px;
+            box-shadow: var(--box-shadow1);
+            cursor: pointer;
+            border: solid 3px var(--main-color-orange);
+            margin-left: 10rem;
+         
+        }
+    }
+    .working-steps{
+        margin-top: -30rem;
+        h2{
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            font-size: 2.5rem;
+            transform: translate3d(0rem, 10rem, 1rem);
+          
+        }
+     
+        .icon-container{
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            
+            .icon{
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                padding: 1rem;
+                font-size: 2rem;
+                margin: 15rem;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                border-radius: 5px;
+                color: var(--main-color-orange);
+                h5{
+                    position: absolute;
+                    margin-top: 12rem;
+                    color: black;
+                    font-size: 1.6rem;
+                    text-align: center;
+                }
+                p{
+                    position: absolute;
+                    margin-top: 15rem;
+                    font-size: 1rem;
+                    color: black;
+                    font-weight: 500;
+                    text-align: center;
+                    
+                }
+            }
+        }
+    }
+    .about-us{
+        position: absolute;
+        padding-right: 1rem;
+        margin-top: 8rem;
+       
+        img{
+             transform: rotateY(180deg);
+             position: absolute;
+             width: 50%;
+             margin-top: -4rem;
+             margin-left: -4rem;
+        }
+        h1{
+            justify-content: right;
+            display: flex;
+            margin-left: 64rem;
+            font-size: 3.5rem;
+            margin-right: 8rem;
+           
+        }
+        p{
+            margin-left: 64rem;
+            margin-right: 15rem;
+          
+        }
+    }
+}
+
+
