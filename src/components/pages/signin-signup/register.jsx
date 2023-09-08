@@ -1,14 +1,12 @@
 import React from 'react';
-import { useState, useEffect} from 'react';
+import { useState} from 'react';
 import './styling.css';
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 
 
 
-const saltRounds = 10;
 
 export default function Register() {
   const [name, setName] = useState('');
