@@ -1,10 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import {motion} from 'framer-motion'
+
 import './navbar.css'
 
 import { SelectButton } from 'primereact/selectbutton';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { AutoComplete } from 'primereact/autocomplete';
 //theme
 import "primereact/resources/themes/lara-light-indigo/theme.css";     
