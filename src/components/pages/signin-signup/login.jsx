@@ -1,12 +1,11 @@
 
 import './styling.css';
-import logo from '../../../assets/logo/logo.png'
-import { motion, progress } from 'framer-motion';
+
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
-import jwtDecode from 'jwt-decode';
-import { useEffect, useRef, useState } from 'react';
-import { redirect, useNavigate  } from 'react-router-dom';
+
+import {  useRef, useState } from 'react';
+
 
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 //core

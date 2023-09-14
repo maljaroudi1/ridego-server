@@ -1,7 +1,5 @@
-import { useState, useRef } from 'react';
-import Calendar from 'react-calendar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarDays, faPlay } from '@fortawesome/free-solid-svg-icons'
+import { useState } from 'react';
+
 
 import { motion } from "framer-motion"  
 import { toast, ToastContainer } from 'react-toastify';
@@ -26,11 +24,7 @@ export default function Cale()  {
 
 
 
-    const [notActive] = useState(1);
-    const playBtn = useRef(null);
-    const playBtn2 = useRef(null);
-    const calenderOneRef = useRef(null);
-    const calenderTwoRef = useRef(null);
+
 
     //validation
     const emailRegex = /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -45,8 +39,6 @@ export default function Cale()  {
      const [carType, setCarType] = useState("");
      const [carID, setCarID] = useState('');
      const [locationCar, setTheLocation] = useState("");
-     const [carPickUp, setNewCarPickUp] = useState(null);
-     const [carReturn, setNewCarReturn] = useState(null);
      const [carTimePickup, setCarTimePickup] = useState("");
      const [carTimeReturn, setCarTimeReturn] = useState("");
      //handle caladner close on date click
@@ -60,7 +52,7 @@ export default function Cale()  {
         ) {
             toast.error('Please fill out all required fields.');
             return;
-            hasErrors = true;
+            // hasErrors = true;
         }
         if(!emailRegex.test(email)){
             toast.error('Invalid Email!')
@@ -74,10 +66,7 @@ export default function Cale()  {
             toast.error('Please select a pickup location!')
             hasErrors = true;
         }
-        // if(carPickUp === null || carReturn === null){
-        //     toast.error('Please select a pickup date and return date!')
-        //     hasErrors = true;
-        // }
+
         if(carTimePickup === ''){
             toast.error('Please select a pickup time!')
             hasErrors = true;
@@ -124,51 +113,7 @@ export default function Cale()  {
         }
 
 
-        // const onClickDayCalOne = () => {
-        //     calenderOneRef.current.classList.toggle('calander-active');
-        // }
 
-
-        // const onClickDayCalTwo = () => {
-        //     calenderTwoRef.current.classList.toggle('calander-active');
-        // }
-
-        // const playBtnActive1 = () => {
-        //     playBtn.current.classList.toggle('play-btn-active');
-        //     calenderOneRef.current.classList.toggle('calander-active');
-
-        //     //deactivate cal2
-        //     playBtn2.current.classList.remove('play-btn-active');
-        //     calenderTwoRef.current.classList.remove('calander-active');
-           
-        //  };
-        //  const playBtnActive2 = () => {
-        //      playBtn2.current.classList.toggle('play-btn-active');
-        //      calenderTwoRef.current.classList.toggle('calander-active');
-        //         //deactivate cal1
-        //     playBtn.current.classList.remove('play-btn-active');
-        //     calenderOneRef.current.classList.remove('calander-active');
-        //   };
-
-
-        //   const [selectedDate, setSelectedDate] = useState(null);
-        //   const [selectedDate2, setSelectedDate2] = useState(null);
-        //   const handlePickUpChange = (date) => {
-
-        //     setSelectedDate(date);
-        //     setNewCarPickUp(date);
-
-
-        //   };
-
-        //   const handleReturnChange = (date) => {
-        //     setSelectedDate2(date);
-        //     setNewCarReturn(date);
-
-        //   };
-
-
-        // const [time, setTime] = useState('');
 
     return (
 
@@ -234,101 +179,13 @@ export default function Cale()  {
                         <line/>
 
 
-                        {/* <div className="hero-calander hero1" onClick={playBtnActive1}>
-                            <div className="date-output calOneOutPut">
-                            {selectedDate && (
-                            <p className='output-date'>
-                                Pickup Date: {selectedDate.toLocaleDateString()}
-                            </p>
-                            )}
 
-                            </div>
-                            <FontAwesomeIcon icon={faCalendarDays} className='calander-icon ' />
-                            <h6>Pick Up Date</h6>
-                            <FontAwesomeIcon icon={faPlay} className={`play-btn play1 ${notActive}`} ref={playBtn}  />
-                        </div> */}
 
                         <Calanders value={carTimePickup} onChange={(e) => setCarTimePickup(e.value)}  showTime hourFormat="12" placeholder='Pickup time' showButtonBar />
-                        {/* <select name="pickup-time" id=""
-                                    className='pickup-time'
-                                    onChange={(e) => setCarTimePickup(e.target.value)}
-                                    required
-                                >
-                                    <option value="N/A" disabled>Pickup time</option>
-                                    <option value="12:00 AM - Morning">12:00 PM - Noon</option>
-                                    <option value="12:30 AM">12:30 PM</option>
-                                    <option value="1:00 PM">1:00 PM</option>
-                                    <option value="1:30 PM">1:30 PM</option>
-                                    <option value="2:00 PM">2:00 PM</option>
-                                    <option value="2:30 PM">2:30 PM</option>
-                                    <option value="3:00 PM">3:00 PM</option>
-                                    <option value="3:30 PM">3:30 PM</option>
-                                    <option value="4:00 PM">4:00 PM</option>
-                                    <option value="4:30 PM">4:30 PM</option>
-                                    <option value="5:00 PM">5:00 PM</option>
-                                    <option value="5:30 PM">5:30 PM</option>
-                                    <option value="6:00 PM">6:00 PM</option>
-                                    <option value="6:30 PM">6:30 PM</option>
-                                    <option value="7:00 PM">7:00 PM</option>
-                                    <option value="7:30 PM">7:30 PM</option>
-                                    <option value="8:00 PM">8:00 PM</option>
-                                    <option value="8:30 PM">8:30 PM</option>
-                                    <option value="9:00 PM">9:00 PM</option>
-                                    <option value="9:30 PM">9:30 PM</option>
-                                    <option value="10:00 PM">10:00 PM</option>
-                                    <option value="10:30 PM">10:30 PM</option>
-                                    <option value="11:00 PM">11:00 PM</option>
-                                    <option value="11:30 PM">11:30 PM</option>
-                                    <option value="12:00 PM - Midnight">12:00 AM - Midnight</option>
-                        </select> */}
 
-                        {/* <div className="hero-calander hero2"  onClick={playBtnActive2}>
-                            <div className="date-output calTwoOutput">
-                            {selectedDate2 && (
-                            <p className='output-date'>
-                                Return Date: {selectedDate2.toLocaleDateString()}
-                            </p>
-                            )}
-
-                            </div>
-                            <FontAwesomeIcon icon={faCalendarDays} className='calander-icon' />
-                            <h6>Return Date</h6>
-                            <FontAwesomeIcon icon={faPlay} className={`play-btn ${notActive}`} ref={playBtn2} />
-
-                        </div> */}
 
                         <Calanders value={carTimeReturn} onChange={(e) => setCarTimeReturn(e.value)}  showTime hourFormat="12" placeholder='Return time' className='returntime' showButtonBar  />
-                        {/* <select name="return-time" id="" className='return-time'
-                                    onChange={(e) => setCarTimeReturn(e.target.value)}
-                                    required
-                                >
-                                    <option value="" disabled>Pickup time</option>
-                                    <option value="12:00 AM - Morning">12:00 PM - Noon</option>
-                                    <option value="12:30 AM">12:30 PM</option>
-                                    <option value="1:00 PM">1:00 PM</option>
-                                    <option value="1:30 PM">1:30 PM</option>
-                                    <option value="2:00 PM">2:00 PM</option>
-                                    <option value="2:30 PM">2:30 PM</option>
-                                    <option value="3:00 PM">3:00 PM</option>
-                                    <option value="3:30 PM">3:30 PM</option>
-                                    <option value="4:00 PM">4:00 PM</option>
-                                    <option value="4:30 PM">4:30 PM</option>
-                                    <option value="5:00 PM">5:00 PM</option>
-                                    <option value="5:30 PM">5:30 PM</option>
-                                    <option value="6:00 PM">6:00 PM</option>
-                                    <option value="6:30 PM">6:30 PM</option>
-                                    <option value="7:00 PM">7:00 PM</option>
-                                    <option value="7:30 PM">7:30 PM</option>
-                                    <option value="8:00 PM">8:00 PM</option>
-                                    <option value="8:30 PM">8:30 PM</option>
-                                    <option value="9:00 PM">9:00 PM</option>
-                                    <option value="9:30 PM">9:30 PM</option>
-                                    <option value="10:00 PM">10:00 PM</option>
-                                    <option value="10:30 PM">10:30 PM</option>
-                                    <option value="11:00 PM">11:00 PM</option>
-                                    <option value="11:30 PM">11:30 PM</option>
-                                    <option value="12:00 PM - Midnight">12:00 PM - Midnight</option>
-                        </select> */}
+
 
                         <motion.a
                         >
@@ -345,26 +202,10 @@ export default function Cale()  {
                 
                     </div> 
 
-                    {/* <div className="calOne" ref={calenderOneRef} >
-
-                         <Calendar
-                            value={carPickUp}
-                            onChange={handlePickUpChange}
-                            required
-                            onClickDay={onClickDayCalOne}
-                         />
 
 
-                    </div>
-                    <div className="calTwo" ref={calenderTwoRef}>
-                         <Calendar
-                           value={carReturn}
-                           onChange={handleReturnChange}
-                           required
-                           onClickDay={onClickDayCalTwo}
-                         />
 
-                    </div > */}
+
                    
                     
         </>
