@@ -1,0 +1,5 @@
+.react-chatbot-kit-chat-container {
+  position: fixed !important;
+  z-index: 12 !important;
+  transform: translate3d(102rem, 27rem, 1rem) !important;
+}/*# sourceMappingURL=chatbot.css.map */

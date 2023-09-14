@@ -1,0 +1,27 @@
+.min-h-screen .flex img {
+  width: 8rem !important;
+  height: 8rem !important;
+}
+.min-h-screen .flex ul li a div {
+  width: 100% !important;
+}
+.min-h-screen .p-5 .border-2 {
+  border-style: none !important;
+}
+
+.min-h-screen .flex img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.show-sidebar {
+  transition: all 0.4s ease-in-out;
+  margin-left: 26rem !important;
+}
+
+@media screen and (max-width: 992px) {
+  .app-media {
+    transition: all 0.4s ease-in-out;
+    left: -26rem !important;
+  }
+}/*# sourceMappingURL=dashboard.css.map */

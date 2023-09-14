@@ -30,7 +30,7 @@
 }
 
 .container {
-  width: 80%;
+  width: 68%;
   position: absolute;
   justify-content: center;
   align-items: baseline;
@@ -43,25 +43,34 @@
   border-radius: 5px;
   background-color: white;
 }
+.container .returntime {
+  transform: translate3d(58rem, 2rem, 1rem) !important;
+}
+.container .p-calendar {
+  transform: translate3d(51rem, 2rem, 1rem);
+}
+.container .p-calendar input {
+  position: relative !important;
+}
 .container .Toastify {
-  transform: translate3d(55rem, -37rem, 1rem);
+  transform: translate3d(67rem, -18rem, 1rem);
 }
 .container input {
-  width: 13.6%;
+  width: 16%;
   padding: 1rem;
   margin-top: 1rem;
   margin-left: 1rem;
-  transform: translateX(-48em);
+  transform: translateX(-40em);
   border: 1px var(--main-color-orange) solid;
   border-radius: 5px;
   outline-color: var(--main-color-orange);
   position: absolute;
 }
 .container .car-input {
-  transform: translate3d(-23.5rem, 5rem, 1rem) !important;
+  transform: translate3d(-18.5rem, 5rem, 1rem) !important;
 }
 .container .email {
-  transform: translateX(-23.6rem) !important;
+  transform: translateX(-18.5rem) !important;
 }
 .container select {
   padding: 1rem;
@@ -69,23 +78,20 @@
   width: 16%;
   margin-top: 0rem;
   margin-left: 1rem;
-  transform: translate3d(-40rem, 5rem, 1rem);
+  transform: translate3d(-33.3rem, 5rem, 1rem);
   background-color: white;
   cursor: pointer;
   border: 1px var(--main-color-orange) solid;
   outline-color: var(--main-color-orange);
   position: absolute;
 }
-.container .pickup-time {
-  transform: translate3d(-7rem, 1rem, 1rem) !important;
-}
-.container .return-time {
-  transform: translate3d(15.5rem, 1rem, 1rem) !important;
+.container .location {
+  transform: translate3d(-33.3rem, 5rem, 1rem) !important;
 }
 .container line {
   height: 1%;
   width: 6.5%;
-  margin-left: 9.5rem;
+  margin-left: 21rem;
   background-color: lightgray;
   position: absolute;
   transform: rotate(90deg);
@@ -120,12 +126,12 @@
 }
 .container .hero1 {
   cursor: pointer;
-  transform: translate3d(-9rem, 54px, 10px);
+  transform: translate3d(-2rem, 54px, 10px);
   position: absolute;
 }
 .container .hero2 {
   cursor: pointer;
-  transform: translate3d(13rem, 54px, 10px);
+  transform: translate3d(19rem, 54px, 10px);
   position: absolute;
 }
 .container .play-btn {
@@ -154,7 +160,7 @@
   cursor: pointer;
 }
 .container a {
-  transform: translate3d(42rem, 43px, 10px);
+  transform: translate3d(20rem, 28px, 10px);
 }
 
 .calOne {

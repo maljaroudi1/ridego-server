@@ -4,18 +4,25 @@ const bodyParser = require('express').json;
 const bcrypt = require("bcrypt");
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+const { response } = require("express");
+
+
+var database;
+
+
 
 const payload = {
   userId: 1
-
 };
+
+
 const secretKey = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
 
 // Connecting to Database
 async function startApp() {
   try {
-    await mongoose.connect('mongodb://localhost:27017/users',  {
+    await mongoose.connect('mongodb+srv://meojax:Gta5forever@register.qy8ljq8.mongodb.net/customerinfo', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       family: 4
@@ -28,6 +35,24 @@ async function startApp() {
 //Initilize function to connect to database
 startApp();
 
+
+
+
+
+const UserSchemaGoogle = new mongoose.Schema({
+  userNameGoogle: {
+    type:  String,
+    require: true,
+  },
+  userEmailGoogle: {
+    type:  String,
+    require: true,
+  },
+  userIDGoogle: {
+    type:  String,
+    require: true,
+  },
+});
 
 //UserScheme for customer-car-booking
 const UserSchemaCar = new mongoose.Schema({
@@ -62,29 +87,19 @@ const UserSchemaCar = new mongoose.Schema({
   carID: {
     type: String,
     required: true,
-    unique: true,
 
   },
   locationCar: {
     type: String,
     required: true,
   },
-  carPickUp: {
-    type: String,
-    required: true,
-  },
-  carReturn: {
-    type: String,
-    required: true,
-
-  },
   carTimePickup: {
     type: String,
-    required: true
+
   },
   carTimeReturn: {
     type: String,
-    required: true
+
   }
 });
 
@@ -94,6 +109,7 @@ const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+
   },
   email: {
     type: String,
@@ -108,6 +124,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+
 });
 
 
@@ -127,8 +145,14 @@ UserSchema.pre('save', async function (next) {
   }
 });
 
-const UserCar = mongoose.model('customer-car-booking', UserSchemaCar);
-const User = mongoose.model('customer-info', UserSchema);
+
+
+const UserCar = mongoose.model('customer-car', UserSchemaCar);
+const User = mongoose.model('customer-infos', UserSchema);
+const UserGoogle = mongoose.model('google-users-info', UserSchemaGoogle);
+
+
+
 
 //Always declare cors above all get and post requests
 app.use(cors({
@@ -141,33 +165,47 @@ app.use(cors({
 
 
 
+
+
 //ExpressJS
 app.use(bodyParser());
 
 
-//Login
-app.post('/users/customer-infos', async (req, res) => {
+//post google login info
+app.post("/google-users-info", async (req, res) => {
+  try {
+    const newGoogleUser = await UserGoogle.create(req.body);
+    res.status(201).json(newGoogleUser);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error creating user.' });
+  }
+});
+
+//Login and check if user is already created
+app.post('/customerinfo/customer-infos', async (req, res) => {
   const { email, password } = req.body;
 
   try {
     // Find the user by email
     const user = await User.findOne({ email });
-
     if (!user) {
       return res.status(401)
       .json({ error: 'Invalid email or password.' });
     }
-
     // Compare the hashed incoming password to the stored hash
     const passwordMatch = await bcrypt.compare(password, user.password);
-
     if (!passwordMatch) {
       return res.status(401)
       .json({ error: 'Invalid email or password.' });
     } else {
-              // Generate and send an authentication token if needed
+       // Generate and send an authentication token if needed
         res.json({ token });
+
     }
+
+
+
 
 
 
@@ -181,12 +219,13 @@ app.post('/users/customer-infos', async (req, res) => {
 
 
 //Get request to check and validate if user email is exact match in database
-app.get('/users/customer-info', async (req, res) => {
-  const { email } = req.query;
+app.get('/customerinfo/customer-info', async (req, res) => {
+  const { email} = req.query;
   try {
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      res.json({ exists: true });
+    const existingEmail = await User.findOne({ email });
+    if (existingEmail ) {
+      res.json({ exists: true});
+
     } else {
       res.json({ exists: false });
     }
@@ -196,8 +235,69 @@ app.get('/users/customer-info', async (req, res) => {
   }
 });
 
+
+app.get('/customerinfo/customer-infos', async (req, res) => {
+  const { name, email } = req.query;
+  try {
+    const existingUsers = await User.find({ name, email });
+
+    if (existingUsers.length > 0) {
+      // At least one user with matching name and email found
+      // Assuming you want to return the name of the first matching user
+      const user = existingUsers[0];
+      res.json({ existingUser: true, name: user.name });
+    } else {
+      // User not found
+      res.json({ existingUser: false });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred.' });
+  }
+});
+
+
+app.get('/customerinfo/customer-cars', async (req, res) => {
+  const { email, carID } = req.query;
+  try {
+    const existingDocument = await UserCar.find({ email, carID });
+    if (existingDocument ) {
+      res.json({ exists: true });
+    } else {
+      res.json({ exists: false });
+    }
+
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred.' });
+  }
+});
+
+
+//Get request to check and validate if carID is in database and post data must mmatch axios post on front end "/customer-cars"
+
+
+
+
+// app.get('/users/customer-info', async (req, res) => {
+//   const { uniqueID, uniqueURLToken } = req.query;
+
+//   try {
+
+//     if(){
+//       res.json({test: true});
+//     } else {
+//       res.json({ test: false });
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({error: 'An error occurred Unique ID not found' })
+//   }
+// });
+
 //Post to save customer car booking information
-app.post('/users', async (req, res) => {
+app.post('/customerinfo/customer-cars', async (req, res) => {
   try{
     const newUserCar = await UserCar.create(req.body);
     res.status(201).json(newUserCar)
@@ -210,7 +310,7 @@ app.post('/users', async (req, res) => {
 
 
 //Post request to create a user
-app.post('/users', async (req, res) => {
+app.post('/customerinfo/customer-info', async (req, res) => {
   try {
     const newUser = await User.create(req.body);
     res.status(201).json(newUser);

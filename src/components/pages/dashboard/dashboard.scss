@@ -1,0 +1,43 @@
+.min-h-screen{
+    .flex {
+        img{
+            width: 8rem !important;
+            height: 8rem !important;
+        }
+        ul{
+            li{
+                a{
+                    div{
+                        width: 100% !important;
+                    }
+                }
+            }
+        }
+    }
+    .p-5{
+        .border-2{
+            border-style: none !important;
+        }
+    }
+}
+
+
+.min-h-screen{
+    .flex{
+        img{
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+
+}
+
+
+
+.show-sidebar{
+    transition: all .4s ease-in-out;
+    margin-left: 26rem !important;
+
+}
+
+@import './media.scss';

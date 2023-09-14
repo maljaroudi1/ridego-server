@@ -1,63 +1,42 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React, { useRef, useState } from 'react'
+
+
 
 import { Link } from 'react-scroll';
-import {motion} from 'framer-motion'
+
 import './navbar.css'
-
-
+import { Ripple } from 'primereact/ripple';
+import PrimeReactContext from 'primereact/api';
+PrimeReactContext.ripple = true;
+import Portal from '../../components/pages/signin-signup/signin-signupmenu'
 
 
 const Navbar = (props) => {
   const navContainerClassName = props.navContainerClassName;
   const aNavClassName = props.aNavClassName;
 
-    const handleLoginPage = () => {
-      window.location.href= "/auth/login";
-    };
-    const handleRegisterPage = () => {
-        window.location.href = "/register";
-    };
 
-
-
-
-    // function applyStyles() {
-
-    //     if(window.location.href === 'https://car-rental-git-main-maljaroudi2000.vercel.app/auth/login' ||
-    //        window.location.href === 'https://car-rental-git-main-maljaroudi2000.vercel.app/register')
-    //        {
-    //             document.body.style.overflow = 'hidden';
-    //        }    else if(window.location.href !== 'https://car-rental-git-main-maljaroudi2000.vercel.app/auth/login' ||
-    //                     window.location.href !== 'https://car-rental-git-main-maljaroudi2000.vercel.app/register')
-    //         {
-    //             document.body.style.overflowX = 'hidden';
-    //         }
-
-
-
-    // }
-
-    // applyStyles();
 
 
     return (
         <>
-
-
-
-
+            <Portal/>
             <div className={`nav-container ${navContainerClassName}`}>
-                        <a href="/home" className={` nav home ${aNavClassName}`}>
+
+                        <a href="/" className={` nav home ${aNavClassName}`}>
                         Home
+                        <Ripple/>
                         </a>
 
                         <a  href='/cars' className={`nav our-collection ${aNavClassName}`}>
                         Cars
+                        <Ripple/>
                         </a>
 
                         <a  className={`nav our-collection ${aNavClassName}`}>
                         Locations
+                        <Ripple/>
                         </a>
 
                         <Link activeClass="active"
@@ -73,6 +52,7 @@ const Navbar = (props) => {
                     >
                             <a href="#" className={`nav our-services ${aNavClassName}`}>
                             Services
+                            <Ripple/>
                             </a>
                     </Link>
 
@@ -87,20 +67,13 @@ const Navbar = (props) => {
                         spyThrottle={500}
                         className={` ${aNavClassName}`}
                     >
-                        <a href="#" className={`nav about-us ${aNavClassName}`}>About us</a>
+                        <a href="#" className={`nav about-us ${aNavClassName}`}>
+                            About us
+                            <Ripple/>
+                            </a>
                     </Link>
 
-                    <div className="button-container">
-                        <motion.button
-                        whileTap={{ scale: 0.9 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                        onClick={handleLoginPage}>Sign in</motion.button>
 
-                        <motion.button
-                        whileTap={{ scale: 0.9 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                        onClick={handleRegisterPage}>Sign up</motion.button>
-                    </div>
 
 
             </div>
@@ -111,4 +84,3 @@ const Navbar = (props) => {
 }
 
 export default Navbar;
-

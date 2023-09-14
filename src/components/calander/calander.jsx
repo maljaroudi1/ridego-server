@@ -7,6 +7,12 @@ import { motion } from "framer-motion"
 import { toast, ToastContainer } from 'react-toastify';
 
 
+import { Calendar as Calanders } from 'primereact/calendar';
+
+import { Ripple } from 'primereact/ripple';
+import PrimeReactContext from 'primereact/api';
+PrimeReactContext.ripple = true;
+
 import carData from '../cars/carData'
 import axios from 'axios';
 
@@ -68,103 +74,114 @@ export default function Cale()  {
             toast.error('Please select a pickup location!')
             hasErrors = true;
         }
-        if(carPickUp === null || carReturn === null){
-            toast.error('Please select a pickup date and return date!')
-            hasErrors = true;
-        }
-        if(carTimePickup.trim() === ''){
+        // if(carPickUp === null || carReturn === null){
+        //     toast.error('Please select a pickup date and return date!')
+        //     hasErrors = true;
+        // }
+        if(carTimePickup === ''){
             toast.error('Please select a pickup time!')
             hasErrors = true;
         }
-        if(carTimeReturn.trim() === ''){
+        if(carTimeReturn === ''){
             toast.error('Please select a return time!')
             hasErrors = true;
         }
 
         try {
-            const response = await axios.post('http://localhost:5000/users', {
-              fullName,
-              email,
-              carName,
-              carYear,
-              carType,
-              carID,
-              locationCar,
-              carPickUp,
-              carReturn,
-              carTimePickup,
-              carTimeReturn
-            });
+            const getCarIDResponse = await axios.get(`http://localhost:5000/customerinfo/customer-cars/?email=${email}&carID=${carID}`);
+              const carExists = getCarIDResponse.data.exists;
+              console.log(carTimePickup)
+              console.log(carTimeReturn)
 
-            if (!hasErrors) {
-              console.log(response.data);
-              toast.success('Car Booked, check your email!');
+            if(!carExists){
+
+                toast.error("Car booked error");
+                toast.error("You can only book one car at a time!");
+            } else {
+                const response = await axios.post('http://localhost:5000/customerinfo/customer-cars', {
+                    fullName,
+                    email,
+                    carName,
+                    carYear,
+                    carType,
+                    carID,
+                    locationCar,
+                    carTimePickup,
+                    carTimeReturn
+                  });
+
+                  if (!hasErrors) {
+                    console.log(response.data);
+                    toast.success('Car Booked, check your email!');
+                  }
+                }
+            } catch (err) {
+                console.log(err);
+                toast.error('An error occurred while checking the car availability.');
             }
-          } catch (err) {
-            console.log(err);
-            toast.error('Car is already booked!');
-          }
+
 
         }
 
 
-        const onClickDayCalOne = () => {
-            calenderOneRef.current.classList.toggle('calander-active');
-        }
+        // const onClickDayCalOne = () => {
+        //     calenderOneRef.current.classList.toggle('calander-active');
+        // }
 
 
-        const onClickDayCalTwo = () => {
-            calenderTwoRef.current.classList.toggle('calander-active');
-        }
+        // const onClickDayCalTwo = () => {
+        //     calenderTwoRef.current.classList.toggle('calander-active');
+        // }
 
-        const playBtnActive1 = () => {
-            playBtn.current.classList.toggle('play-btn-active');
-            calenderOneRef.current.classList.toggle('calander-active');
+        // const playBtnActive1 = () => {
+        //     playBtn.current.classList.toggle('play-btn-active');
+        //     calenderOneRef.current.classList.toggle('calander-active');
 
-            //deactivate cal2
-            playBtn2.current.classList.remove('play-btn-active');
-            calenderTwoRef.current.classList.remove('calander-active');
+        //     //deactivate cal2
+        //     playBtn2.current.classList.remove('play-btn-active');
+        //     calenderTwoRef.current.classList.remove('calander-active');
            
-         };
-         const playBtnActive2 = () => {
-             playBtn2.current.classList.toggle('play-btn-active');
-             calenderTwoRef.current.classList.toggle('calander-active');
-                //deactivate cal1
-            playBtn.current.classList.remove('play-btn-active');
-            calenderOneRef.current.classList.remove('calander-active');
-          };
+        //  };
+        //  const playBtnActive2 = () => {
+        //      playBtn2.current.classList.toggle('play-btn-active');
+        //      calenderTwoRef.current.classList.toggle('calander-active');
+        //         //deactivate cal1
+        //     playBtn.current.classList.remove('play-btn-active');
+        //     calenderOneRef.current.classList.remove('calander-active');
+        //   };
 
 
-          const [selectedDate, setSelectedDate] = useState(null);
-          const [selectedDate2, setSelectedDate2] = useState(null);
-          const handlePickUpChange = (date) => {
+        //   const [selectedDate, setSelectedDate] = useState(null);
+        //   const [selectedDate2, setSelectedDate2] = useState(null);
+        //   const handlePickUpChange = (date) => {
 
-            setSelectedDate(date);
-            setNewCarPickUp(date);
-
-
-          };
-
-          const handleReturnChange = (date) => {
-            setSelectedDate2(date);
-            setNewCarReturn(date);
-
-          };
+        //     setSelectedDate(date);
+        //     setNewCarPickUp(date);
 
 
-        
+        //   };
+
+        //   const handleReturnChange = (date) => {
+        //     setSelectedDate2(date);
+        //     setNewCarReturn(date);
+
+        //   };
+
+
+        // const [time, setTime] = useState('');
 
     return (
 
         <>          
 
                     <motion.button
-                                className='book-btn postiton-btn'
+                                className='book-btn postiton-btn p-ripple'
                                 whileTap={{ scale: 0.9 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                                 onClick={onSubmitCreateCar}
                             >
                             Book Your Ride
+                            <Ripple />
                      </motion.button>    
                 <div className="container">
                     <ToastContainer/>
@@ -205,6 +222,7 @@ export default function Cale()  {
                         </select>
 
                         <select name="location" id=""
+                                    className='location'
                                     onChange={(e) => setTheLocation(e.target.value)}
                                     required
                                 >
@@ -216,7 +234,7 @@ export default function Cale()  {
                         <line/>
 
 
-                        <div className="hero-calander hero1" onClick={playBtnActive1}>
+                        {/* <div className="hero-calander hero1" onClick={playBtnActive1}>
                             <div className="date-output calOneOutPut">
                             {selectedDate && (
                             <p className='output-date'>
@@ -228,14 +246,17 @@ export default function Cale()  {
                             <FontAwesomeIcon icon={faCalendarDays} className='calander-icon ' />
                             <h6>Pick Up Date</h6>
                             <FontAwesomeIcon icon={faPlay} className={`play-btn play1 ${notActive}`} ref={playBtn}  />
-                        </div>
-                        <select name="pickup-time" id="" className='pickup-time'
+                        </div> */}
+
+                        <Calanders value={carTimePickup} onChange={(e) => setCarTimePickup(e.value)}  showTime hourFormat="12" placeholder='Pickup time' showButtonBar />
+                        {/* <select name="pickup-time" id=""
+                                    className='pickup-time'
                                     onChange={(e) => setCarTimePickup(e.target.value)}
                                     required
                                 >
-                                    <option value="" disabled>Pickup time</option>
-                                    <option value="12:00 AM - Morning">12:00 AM - Morning </option>
-                                    <option value="12:30 AM">12:30 AM</option>
+                                    <option value="N/A" disabled>Pickup time</option>
+                                    <option value="12:00 AM - Morning">12:00 PM - Noon</option>
+                                    <option value="12:30 AM">12:30 PM</option>
                                     <option value="1:00 PM">1:00 PM</option>
                                     <option value="1:30 PM">1:30 PM</option>
                                     <option value="2:00 PM">2:00 PM</option>
@@ -258,10 +279,10 @@ export default function Cale()  {
                                     <option value="10:30 PM">10:30 PM</option>
                                     <option value="11:00 PM">11:00 PM</option>
                                     <option value="11:30 PM">11:30 PM</option>
-                                    <option value="12:00 PM - Midnight">12:00 PM - Midnight</option>
-                        </select>
+                                    <option value="12:00 PM - Midnight">12:00 AM - Midnight</option>
+                        </select> */}
 
-                        <div className="hero-calander hero2"  onClick={playBtnActive2}>
+                        {/* <div className="hero-calander hero2"  onClick={playBtnActive2}>
                             <div className="date-output calTwoOutput">
                             {selectedDate2 && (
                             <p className='output-date'>
@@ -274,14 +295,16 @@ export default function Cale()  {
                             <h6>Return Date</h6>
                             <FontAwesomeIcon icon={faPlay} className={`play-btn ${notActive}`} ref={playBtn2} />
 
-                        </div>
-                        <select name="return-time" id="" className='return-time'
+                        </div> */}
+
+                        <Calanders value={carTimeReturn} onChange={(e) => setCarTimeReturn(e.value)}  showTime hourFormat="12" placeholder='Return time' className='returntime' showButtonBar  />
+                        {/* <select name="return-time" id="" className='return-time'
                                     onChange={(e) => setCarTimeReturn(e.target.value)}
                                     required
                                 >
                                     <option value="" disabled>Pickup time</option>
-                                    <option value="12:00 AM - Morning">12:00 AM - Morning </option>
-                                    <option value="12:30 AM">12:30 AM</option>
+                                    <option value="12:00 AM - Morning">12:00 PM - Noon</option>
+                                    <option value="12:30 AM">12:30 PM</option>
                                     <option value="1:00 PM">1:00 PM</option>
                                     <option value="1:30 PM">1:30 PM</option>
                                     <option value="2:00 PM">2:00 PM</option>
@@ -305,23 +328,24 @@ export default function Cale()  {
                                     <option value="11:00 PM">11:00 PM</option>
                                     <option value="11:30 PM">11:30 PM</option>
                                     <option value="12:00 PM - Midnight">12:00 PM - Midnight</option>
-                        </select>
+                        </select> */}
 
                         <motion.a
                         >
                              <motion.button
-                                    className='book-btn'
+                                    className='book-btn p-ripple'
                                     whileTap={{ scale: 0.9 }}
                                     transition={{ type: "spring", stiffness: 400, damping: 17 }}
                                     onClick={onSubmitCreateCar}
                             >
                                 Book Your Ride
+                                <Ripple />
                             </motion.button>
                         </motion.a>
                 
                     </div> 
 
-                    <div className="calOne" ref={calenderOneRef} >
+                    {/* <div className="calOne" ref={calenderOneRef} >
 
                          <Calendar
                             value={carPickUp}
@@ -340,7 +364,7 @@ export default function Cale()  {
                            onClickDay={onClickDayCalTwo}
                          />
 
-                    </div >
+                    </div > */}
                    
                     
         </>

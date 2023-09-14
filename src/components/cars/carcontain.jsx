@@ -1,7 +1,7 @@
 
 import './car.css'
 import Cars from './car'
-
+import Cookies from 'js-cookie'
 
 //logo
 import logo from '../../assets/logo/logo.png'
@@ -19,6 +19,9 @@ import { useState, useRef } from 'react';
 //Prime-react
 
 import { AutoComplete } from 'primereact/autocomplete';
+import { Ripple } from 'primereact/ripple';
+
+PrimeReactContext.ripple = true;
 
 
 
@@ -84,7 +87,7 @@ export default function  carContainer()   {
                     }
 
                    try{
-                        const response = await axios.post('http://localhost:5000/users', {
+                        const response = await axios.post('http://localhost:5000/customerinfo/customer-cars', {
                             fullName,
                             email,
                             phone,
@@ -97,19 +100,34 @@ export default function  carContainer()   {
                             carReturn,
 
                         })
-                        console.log(response.data);
+                        const theCarID = response.data.carID;
+                        const theLocation = response.data.locationCar;
+                        const thePickUpDate = response.data.carPickUp;
+                        const theReturnDate = (response.data.carReturn);
+                        const TheReturnDateCookie = new Date(response.data.carReturn);
+
+
+                        const TheReturnCookie = Math.floor(TheReturnDateCookie.getTime() / 1000); // Convert milliseconds to seconds
+                        console.log(theReturnDate)
+                        console.log(TheReturnCookie)
+
+                        Cookies.set('CarID', JSON.stringify(theCarID), { expires: theReturnDate });
+                        Cookies.set('Location', JSON.stringify(theLocation), { expires: theReturnDate });
+                        Cookies.set('PickupDate', JSON.stringify(thePickUpDate), { expires: theReturnDate });
+                        Cookies.set('ReturnDate', JSON.stringify(theReturnDate), { expires: theReturnDate });
+
                          // EmailJS implementation would be around here, where the customer would receive an email on form submisson,
                          // would return customer pickupdate/returndate using backend and all booking information
                         toast.success('Car Booked, check your email!');
-                        setTimeout(() => {
-                            window.location.href = '/booking/successful';
-                          }, 5000);
+                        // setTimeout(() => {
+                        //     window.location.href = '/booking/successful';
+                        //   }, 5000);
 
 
                    }
                    catch(err){
                         console.log(err)
-                        toast.error('Car is Already Booked, Pick another car!');
+                        toast.error(`error:${err}`);
                    }
 
 
@@ -162,27 +180,29 @@ export default function  carContainer()   {
 
 
                      <AutoComplete field="name"
+                     className='p-ripple'
                      value={search}
                      suggestions={car}
                      completeMethod={search}
-                     onChange={(e) => setSearch(e.value)} placeholder='Search' />
-
-                    <div className="logo">
-                        <img src={logo} alt="" />
-                        <h1>RentGo</h1>
-                    </div>
+                     onChange={(e) => setSearch(e.value)} placeholder='Search'
+                     />
 
 
 
-                    <div className="nav-bar-under">
+
+
+                    <div className="nav-bar-under ">
 
                     <SelectButton
+
                     value={sortCars}
                     onChange={(e) => setSortCars(e.value)}
                     optionLabel="carType"
                     options={sortByCarType}
                     className="select-btn"
                     />
+
+
 
                     </div>
 
