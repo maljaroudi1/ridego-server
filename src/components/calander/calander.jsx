@@ -17,7 +17,7 @@ import axios from 'axios';
 
 //CSS files
 import 'react-toastify/dist/ReactToastify.css';
-import 'react-calendar/dist/Calendar.css';
+
 import  './calander.css'
 
 export default function Cale()  {
