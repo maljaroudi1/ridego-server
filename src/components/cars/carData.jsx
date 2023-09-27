@@ -7,7 +7,7 @@ const carData = [
     {
 
         carID: "1",
-        carImg: "/public/assets/cars/bmw/bmwZroadster.png",
+        carImg: "/assets/cars/bmw/bmwZroadster.png",
         carName: "BMW Z-Roadster",
         carPriceDay: "$350/Day",
         carPriceMonth: "$10500/Month",
@@ -26,7 +26,7 @@ const carData = [
     {
 
         carID: "2",
-        carImg: "/public/assets/cars/bmw/BmwM4Coupe.png",
+        carImg: "/assets/cars/bmw/BmwM4Coupe.png",
         carName: "BMW M4 Coupe",
         carPriceDay: "$550/Day",
         carPriceMonth: "$16500/Month",
@@ -45,7 +45,7 @@ const carData = [
     {
 
         carID: "3",
-        carImg: "/public/assets/cars/honda/hondaCRVClosed.png",
+        carImg: "/assets/cars/honda/hondaCRVClosed.png",
         carName: "Honda Crv",
         carPriceDay: "$150/Day",
         carPriceMonth: "$4500/Month",
@@ -64,7 +64,7 @@ const carData = [
     {
 
         carID: "4",
-        carImg: "/public/assets/cars/toyota/ToyotaCamry.png",
+        carImg: "/assets/cars/toyota/ToyotaCamry.png",
         carName: "Toyota Camry",
         carPriceDay: "$190/Day",
         carPriceMonth: "$5700/Month",
@@ -84,7 +84,7 @@ const carData = [
     {
 
         carID: "5",
-        carImg: "/public/assets/cars/bmw/BmwM4Coupe.png",
+        carImg: "/assets/cars/bmw/BmwM4Coupe.png",
         carName: "BMW M4 Coupe",
         carPriceDay: "$550/Day",
         carPriceMonth: "$16500/Month",
@@ -105,7 +105,7 @@ const carData = [
     {
 
         carID: "6",
-        carImg: "/public/assets/cars/honda/hondaCRVClosed.png",
+        carImg: "/assets/cars/honda/hondaCRVClosed.png",
         carName: "Honda CRV",
         carPriceDay: "$150/Day",
         carPriceMonth: "$4500/Month",
@@ -125,7 +125,7 @@ const carData = [
     {
 
         carID: "7",
-        carImg: "/public/assets/cars/toyota/ToyotaCamry.png",
+        carImg: "/assets/cars/toyota/ToyotaCamry.png",
         carName: "Toyota Camry",
         carPriceDay: "$190/Day",
         carPriceMonth: "$5700/Month",
@@ -145,7 +145,7 @@ const carData = [
     {
 
         carID: "8",
-        carImg: "/public/assets/cars/honda/hondaHrvClosed.png",
+        carImg: "/assets/cars/honda/hondaHrvClosed.png",
         carName: "Honda HRV",
         carPriceDay: "$150/Day",
         carPriceMonth: "$4500/Month",
@@ -165,7 +165,7 @@ const carData = [
     {
 
         carID: "9",
-        carImg: "/public/assets/cars/honda/hondaCivicSi.png",
+        carImg: "/assets/cars/honda/hondaCivicSi.png",
         carName: "Honda Civic Si",
         carPriceDay: "$190/Day",
         carPriceMonth: "$5700/Month",
@@ -185,7 +185,7 @@ const carData = [
     {
 
         carID: "10",
-        carImg: "/public/assets/cars/toyota/ToyotaCorolla.png",
+        carImg: "/assets/cars/toyota/ToyotaCorolla.png",
         carName: "Toyota Corolloa",
         carPriceDay: "$100/Day",
         carPriceMonth: "$3000/Month",
@@ -205,7 +205,7 @@ const carData = [
     {
 
         carID: "11",
-        carImg: "/public/assets/cars/toyota/ToyotaCrown.png",
+        carImg: "/assets/cars/toyota/ToyotaCrown.png",
         carName: "Toyota Crown",
         carPriceDay: "$150/Day",
         carPriceMonth: "$4500/Month",
@@ -225,7 +225,7 @@ const carData = [
     {
 
         carID: "12",
-        carImg: "/public/assets/cars/toyota/ToyotaGrSupra.png",
+        carImg: "/assets/cars/toyota/ToyotaGrSupra.png",
         carName: "Toyota Supra",
         carPriceDay: "$650/Day",
         carPriceMonth: "$19500/Month",
@@ -245,7 +245,7 @@ const carData = [
     {
 
         carID: "13",
-        carImg: "/public/assets/cars/honda/hondaPassportClosed.png",
+        carImg: "/assets/cars/honda/hondaPassportClosed.png",
         carName: "Honda Passport",
         carPriceDay: "$150/Day",
         carPriceMonth: "$4500/Month",
@@ -265,7 +265,7 @@ const carData = [
     {
 
         carID: "14",
-        carImg: "/public/assets/cars/bmw/BMWM5Competetion.png",
+        carImg: "/assets/cars/bmw/BMWM5Competetion.png",
         carName: "BMW M5 Comp",
         carPriceDay: "$550/Day",
         carPriceMonth: "$16500/Month",
@@ -285,7 +285,7 @@ const carData = [
     {
 
         carID: "15",
-        carImg: "/public/assets/cars/bmw/bmwM2Coupe.png",
+        carImg: "/assets/cars/bmw/bmwM2Coupe.png",
         carName: "BMW M2 Coupe",
         carPriceDay: "$350/Day",
         carPriceMonth: "$10500/Month",
@@ -305,7 +305,7 @@ const carData = [
     {
 
         carID: "16",
-        carImg: "/public/assets/cars/bmw/BMWM3.png",
+        carImg: "/assets/cars/bmw/BMWM3.png",
         carName: "BMW M3 Sedan",
         carPriceDay: "$350/Day",
         carPriceMonth: "$10500/Month",
@@ -325,7 +325,7 @@ const carData = [
     {
 
         carID: "17",
-        carImg: "/public/assets/cars/bmw/BMWM8CabRiolet.png",
+        carImg: "/assets/cars/bmw/BMWM8CabRiolet.png",
         carName: "BMW M8",
         carPriceDay: "$650/Day",
         carPriceMonth: "$19500/Month",
