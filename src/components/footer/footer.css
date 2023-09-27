@@ -19,7 +19,6 @@
   margin-left: -1rem;
   transform: translateY(9rem);
   overflow: hidden;
-  margin-top: 0rem;
 }
 .footer-container .logo-info-container {
   position: absolute;
@@ -110,4 +109,20 @@
 }
 .footer-container .copy-right p {
   color: white;
+}
+
+.footer-color {
+  background-color: var(--footer);
+}
+.footer-color .text-900 {
+  color: white !important;
+}
+.footer-color .text-500 {
+  color: white !important;
+}
+.footer-color .text-600 {
+  color: white !important;
+}
+.footer-color .text-600:hover {
+  color: red !important;
 }/*# sourceMappingURL=footer.css.map */

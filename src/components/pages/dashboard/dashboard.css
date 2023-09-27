@@ -19,6 +19,18 @@
   margin-left: 26rem !important;
 }
 
+.grey-dark {
+  background-color: #212121;
+}
+
+.grey-light {
+  background-color: #282E38;
+}
+
+.hover-lighter:hover {
+  background-color: #394252;
+}
+
 @media screen and (max-width: 992px) {
   .app-media {
     transition: all 0.4s ease-in-out;

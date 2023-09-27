@@ -4,10 +4,10 @@ const bodyParser = require('express').json;
 const bcrypt = require("bcrypt");
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const { response } = require("express");
 
 
-var database;
+const compression = require('compression');
+app.use(compression());
 
 
 
@@ -86,12 +86,12 @@ const UserSchemaCar = new mongoose.Schema({
   },
   carID: {
     type: String,
-    required: true,
+
 
   },
   locationCar: {
     type: String,
-    required: true,
+
   },
   carTimePickup: {
     type: String,

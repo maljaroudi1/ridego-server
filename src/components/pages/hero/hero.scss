@@ -6,7 +6,7 @@
 
 
 .hero{
-    overflow: hidden;
+
     .logo{
        
         position: absolute;
@@ -38,8 +38,25 @@
         }
     }
     .hero-btn{    
-        transform: translate3d(7rem, 27rem, 1rem) !important;
-    
+        z-index: 99;
+        position: absolute;
+        transform: translate3d(7rem, 27rem, 1rem) ;
+        .book-hero-btn{
+            border-radius: 5px;
+            background-color: #FD8800 ;
+            width: 8rem;
+            height: 3rem;
+            color:white ;
+            font-weight: 900;
+            border: 0px;
+            box-shadow: var(--box-shadow1);
+            cursor: pointer;
+            border: solid 3px var(--main-color-orange);
+            margin-top: 0rem;
+            margin-left: 1rem;
+            margin-right: -15rem;
+
+        }
         .sell-btn{
             border-radius: 5px;
             background-color: white;
@@ -52,7 +69,8 @@
             cursor: pointer;
             border: solid 3px var(--main-color-orange);
             margin-left: 10rem;
-         
+            margin-top: 0rem;
+            position: absolute;
         }
     }
     .working-steps{
@@ -81,6 +99,7 @@
                 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
                 border-radius: 5px;
                 color: var(--main-color-orange);
+
                 h5{
                     position: absolute;
                     margin-top: 12rem;

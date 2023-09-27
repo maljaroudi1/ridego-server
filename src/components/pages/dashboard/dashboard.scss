@@ -40,4 +40,21 @@
 
 }
 
+
+
+.grey-dark{
+    background-color: #212121;
+}
+
+.grey-light{
+    background-color: #282E38;
+}
+
+
+.hover-lighter{
+    &:hover{
+        background-color: #394252;
+    }
+
+}
 @import './media.scss';

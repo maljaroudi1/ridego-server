@@ -1,12 +1,11 @@
 import { useState } from 'react';
 
-
 import { motion } from "framer-motion"  
 import { toast, ToastContainer } from 'react-toastify';
 
 
 import { Calendar as Calanders } from 'primereact/calendar';
-
+import Cookies from 'js-cookie';
 import { Ripple } from 'primereact/ripple';
 import PrimeReactContext from 'primereact/api';
 PrimeReactContext.ripple = true;
@@ -75,42 +74,59 @@ export default function Cale()  {
             toast.error('Please select a return time!')
             hasErrors = true;
         }
-
         try {
-            const getCarIDResponse = await axios.get(`http://localhost:5000/customerinfo/customer-cars/?email=${email}&carID=${carID}`);
-              const carExists = getCarIDResponse.data.exists;
-              console.log(carTimePickup)
-              console.log(carTimeReturn)
+                const getCarIDResponse = await axios.get(`http://localhost:5000/customerinfo/customer-cars/?email=${email}&carID=${carID}`);
+                const carExists = getCarIDResponse.data.exists;
+                console.log(carTimePickup)
+                console.log(carTimeReturn)
 
-            if(!carExists){
+                if(!carExists){
 
-                toast.error("Car booked error");
-                toast.error("You can only book one car at a time!");
-            } else {
-                const response = await axios.post('http://localhost:5000/customerinfo/customer-cars', {
-                    fullName,
-                    email,
-                    carName,
-                    carYear,
-                    carType,
-                    carID,
-                    locationCar,
-                    carTimePickup,
-                    carTimeReturn
-                  });
+                    toast.error("Car booked error");
+                    toast.error("You can only book one car at a time!");
+                } else {
+                    const response = await axios.post('http://localhost:5000/customerinfo/customer-cars', {
+                        fullName,
+                        email,
+                        carName,
+                        carYear,
+                        carType,
+                        carID,
+                        locationCar,
+                        carTimePickup,
+                        carTimeReturn
+                    });
 
-                  if (!hasErrors) {
-                    console.log(response.data);
-                    toast.success('Car Booked, check your email!');
-                  }
+
+                    if (!hasErrors) {
+
+                        toast.success('Car Booked, check your email!');
+                        const theCarID = response.data.carID;
+                        const theLocation = response.data.locationCar;
+                        const thePickUpDate = new Date(response.data.carTimePickup);
+                        const theReturnDate = new Date(response.data.carTimeReturn);
+                        const CarBooked = true;
+
+
+                        // console.log(response.data);
+                        // console.log(theCarID)
+                        // console.log(theLocation)
+                        // console.log(thePickUpDate)
+
+
+                        Cookies.set('CarID', JSON.stringify(theCarID), { expires: theReturnDate });
+                        Cookies.set('Location', JSON.stringify(theLocation), { expires: theReturnDate });
+                        Cookies.set('PickupDate', JSON.stringify(thePickUpDate), { expires: theReturnDate });
+                        Cookies.set('ReturnDate', JSON.stringify(theReturnDate), { expires: theReturnDate });
+                        Cookies.set('CarBooked', JSON.stringify(CarBooked), { expires: theReturnDate });
+                    }
                 }
-            } catch (err) {
-                console.log(err);
-                toast.error('An error occurred while checking the car availability.');
-            }
-
-
+        } catch (err) {
+                    console.log(err);
+                    toast.error('An error occurred while checking the car availability.');
         }
+
+    }
 
 
 
@@ -118,18 +134,9 @@ export default function Cale()  {
     return (
 
         <>          
-
-                    <motion.button
-                                className='book-btn postiton-btn p-ripple'
-                                whileTap={{ scale: 0.9 }}
-                                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                                onClick={onSubmitCreateCar}
-                            >
-                            Book Your Ride
-                            <Ripple />
-                     </motion.button>    
-                <div className="container">
+                <div className="container" id='target3'>
                     <ToastContainer/>
+                    <h1 className='mobile'>Book Your Ride Now!</h1>
 
                         <input type="text" placeholder='Your Full Name'
                         onChange={(e) => setFullName(e.target.value)}
@@ -172,19 +179,19 @@ export default function Cale()  {
                                     required
                                 >
                                         <option value="" disabled selected>Select pick up location</option>
-                                        <option value="3500 Mavis Rd">3500 Mavis Rd, Mississauga, ON L5C 1T8</option>
-                                        <option value="55 King St W">55 King St W, Toronto, ON M5H 3C2</option>
-                                        <option value="215 Evans Ave">215 Evans Ave, Etobicoke, ON M8Z 1J5</option>
+                                        <option value="3500 Mavis Rd Mississauga, ON L5C 1T8">3500 Mavis Rd, Mississauga, ON L5C 1T8</option>
+                                        <option value="55 King St W, Toronto, ON M5H 3C2">55 King St W, Toronto, ON M5H 3C2</option>
+                                        <option value="215 Evans Ave, Etobicoke, ON M8Z 1J5">215 Evans Ave, Etobicoke, ON M8Z 1J5</option>
                                 </select>
                         <line/>
 
 
 
 
-                        <Calanders value={carTimePickup} onChange={(e) => setCarTimePickup(e.value)}  showTime hourFormat="12" placeholder='Pickup time' showButtonBar />
+                        <Calanders value={carTimePickup} onChange={(e) => setCarTimePickup(e.value)}  showTime hourFormat="12" placeholder='Pickup time'id='pickuptime 'showButtonBar />
 
 
-                        <Calanders value={carTimeReturn} onChange={(e) => setCarTimeReturn(e.value)}  showTime hourFormat="12" placeholder='Return time' className='returntime' showButtonBar  />
+                        <Calanders value={carTimeReturn} onChange={(e) => setCarTimeReturn(e.value)}  showTime hourFormat="12" placeholder='Return time' id='returntime' showButtonBar  />
 
 
                         <motion.a
@@ -200,7 +207,7 @@ export default function Cale()  {
                             </motion.button>
                         </motion.a>
                 
-                    </div> 
+                 </div>
 
 
 

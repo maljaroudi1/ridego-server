@@ -3,9 +3,6 @@
   --box-shadow1: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-.hero {
-  overflow: hidden;
-}
 .hero .logo {
   position: absolute;
 }
@@ -30,7 +27,24 @@
   font-size: 3.5rem;
 }
 .hero .hero-btn {
-  transform: translate3d(7rem, 27rem, 1rem) !important;
+  z-index: 99;
+  position: absolute;
+  transform: translate3d(7rem, 27rem, 1rem);
+}
+.hero .hero-btn .book-hero-btn {
+  border-radius: 5px;
+  background-color: #FD8800;
+  width: 8rem;
+  height: 3rem;
+  color: white;
+  font-weight: 900;
+  border: 0px;
+  box-shadow: var(--box-shadow1);
+  cursor: pointer;
+  border: solid 3px var(--main-color-orange);
+  margin-top: 0rem;
+  margin-left: 1rem;
+  margin-right: -15rem;
 }
 .hero .hero-btn .sell-btn {
   border-radius: 5px;
@@ -44,6 +58,8 @@
   cursor: pointer;
   border: solid 3px var(--main-color-orange);
   margin-left: 10rem;
+  margin-top: 0rem;
+  position: absolute;
 }
 .hero .working-steps {
   margin-top: -30rem;

@@ -18,6 +18,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " Sport",
+        carPassengers: '2',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'RWD',
         buttonName: 'Rent now'
     },
     {
@@ -34,6 +37,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " Sport",
+        carPassengers: '2',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'RWD',
         buttonName: 'Rent now'
     },
     {
@@ -50,6 +56,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " SUV",
+        carPassengers: '6',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'AWD',
         buttonName: 'Rent now'
     },
     {
@@ -67,6 +76,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " Sedan",
+        carPassengers: '5',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'AWD',
         buttonName: 'Rent now'
     },
     {
@@ -84,6 +96,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " Sport",
+        carPassengers: '2',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'RWD',
         buttonName: 'Rent now'
     },
 
@@ -102,6 +117,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " SUV",
+        carPassengers: '6',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'AWD',
         buttonName: 'Rent now'
     },
     {
@@ -119,6 +137,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " Sedan",
+        carPassengers: '5',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'AWD',
         buttonName: 'Rent now'
     },
     {
@@ -136,6 +157,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " SUV",
+        carPassengers: '6',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'AWD',
         buttonName: 'Rent now'
     },
     {
@@ -153,6 +177,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " Sedan",
+        carPassengers: '5',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'RWD',
         buttonName: 'Rent now'
     },
     {
@@ -170,6 +197,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " Sedan",
+        carPassengers: '5',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'AWD',
         buttonName: 'Rent now'
     },
     {
@@ -187,6 +217,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " Sedan",
+        carPassengers: '5',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'RWD',
         buttonName: 'Rent now'
     },
     {
@@ -204,6 +237,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " Sport",
+        carPassengers: '2',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'RWD',
         buttonName: 'Rent now'
     },
     {
@@ -221,13 +257,16 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " SUV",
+        carPassengers: '6',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'AWD',
         buttonName: 'Rent now'
     },
     {
 
         carID: "14",
         carImg: "/src/assets/cars/bmw/BMWM5Competetion.png",
-        carName: "BMW M5 Competetion",
+        carName: "BMW M5 Comp",
         carPriceDay: "$550/Day",
         carPriceMonth: "$16500/Month",
         carSpedometer: "2k",
@@ -238,6 +277,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " Sport",
+        carPassengers: '5',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'RWD',
         buttonName: 'Rent now'
     } ,
     {
@@ -255,13 +297,16 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " Sport",
+        carPassengers: '2',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'RWD',
         buttonName: 'Rent now'
     },
     {
 
         carID: "16",
         carImg: "/src/assets/cars/bmw/BMWM3.png",
-        carName: "BMW M3",
+        carName: "BMW M3 Sedan",
         carPriceDay: "$350/Day",
         carPriceMonth: "$10500/Month",
         carSpedometer: "4k",
@@ -272,13 +317,16 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " Sport",
+        carPassengers: '2',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'RWD',
         buttonName: 'Rent now'
     },
     {
 
         carID: "17",
         carImg: "/src/assets/cars/bmw/BMWM8CabRiolet.png",
-        carName: "BMW M8 Cabriolet",
+        carName: "BMW M8",
         carPriceDay: "$650/Day",
         carPriceMonth: "$19500/Month",
         carSpedometer: "4k",
@@ -289,6 +337,9 @@ const carData = [
         classForSvg: "custom-svg",
         carYear: " 2023",
         carType: " Sport",
+        carPassengers: '2',
+        carLiterKM:'10L/100KM',
+        carDrivetrain: 'RWD',
         buttonName: 'Rent now'
     }
 

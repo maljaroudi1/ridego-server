@@ -1,0 +1,12 @@
+.locatebtn {
+  position: absolute;
+  width: 11rem;
+  height: 2.6rem;
+  z-index: 33;
+  margin-left: 30rem;
+  margin-top: 0.6rem;
+  border-radius: 1px;
+  cursor: pointer;
+  background-color: white;
+  font-weight: 900;
+}/*# sourceMappingURL=location.css.map */

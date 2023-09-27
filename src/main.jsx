@@ -8,7 +8,7 @@ import ChatBot from './components/chat-bot/chatbot';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <ChatBot/>
+      {/* <ChatBot/> */}
       <Routes/>
   </React.StrictMode>,
 )

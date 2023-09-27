@@ -21,7 +21,7 @@
     margin-left: -1rem;
     transform: translateY(9rem);
     overflow: hidden;
-    margin-top: 0rem;
+
     .logo-info-container{
         position: absolute;
         transform: translate3d(0rem, -2rem, 1rem);
@@ -116,6 +116,22 @@
         p{
             color: white;
             
+        }
+    }
+}
+
+.footer-color{
+    background-color: var(--footer);
+    .text-900{
+        color: white !important;
+    }
+    .text-500{
+        color: white !important;
+    }
+    .text-600{
+        color: white !important;
+        &:hover{
+            color: red !important;
         }
     }
 }

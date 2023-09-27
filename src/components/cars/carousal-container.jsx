@@ -1,4 +1,4 @@
-
+'use client'
 
 import './car.css';
 
@@ -37,7 +37,7 @@ export default function Carousal() {
             
             >
 
-                        <div className="grouped-cars">
+                        <div className="grouped-cars ">
                             <Cars 
                             carImg={BMWM4Coupe}
                             carName="BMW M4 Coupe" 
@@ -85,7 +85,7 @@ export default function Carousal() {
 
                         </div>
 
-                        <div className="grouped-cars">
+                        <div className="grouped-cars ">
                             <Cars 
                             carImg={BMWM4Coupe}
                             carName="BMW M4 Coupe" 
@@ -133,7 +133,7 @@ export default function Carousal() {
 
                         </div>
                     
-                        <div className="grouped-cars">
+                        <div className="grouped-cars ">
                             <Cars 
                             carImg={BMWM4Coupe}
                             carName="BMW M4 Coupe" 
@@ -180,8 +180,7 @@ export default function Carousal() {
                             />
 
                         </div>
-            
-    
+
                     
             </Carousel>     
         </div>

@@ -42,6 +42,9 @@
     z-index: 12;
     border-radius: 5px;
     background-color: white;
+    .mobile{
+        display: none;
+    }
     .returntime{
         transform: translate3d(58rem, 2rem, 1rem) !important;
     }
@@ -60,18 +63,17 @@
         padding: 1rem;
         margin-top: 1rem;
         margin-left: 1rem;
-        transform: translateX(-40em);
+        transform: translateX(-37rem);
         border: 1px var(--main-color-orange) solid;
         border-radius: 5px;
         outline-color: var(--main-color-orange);
         position: absolute;
     }
     .car-input{
-        transform: translate3d(-18.5rem, 5rem, 1rem) !important;
+        transform: translate3d(-20.5rem, 5rem, 1rem) !important;
     }
     .email{
-        transform: translateX(-18.5rem) !important;
-
+        transform: translateX(-20.5rem) !important;
     }
     select{
         padding: 1rem;
@@ -87,13 +89,13 @@
         position: absolute;
     }
     .location{
-        transform: translate3d(-33.3rem, 5rem, 1rem) !important;
+        transform: translate3d(-37rem, 5rem, 1rem) !important;
     }
 
     line{
         height: 1%;
-        width: 6.5%;
-        margin-left: 21rem;
+        width: 3.5%;
+        margin-left: 20rem;
         background-color: lightgray;
         position: absolute;
         transform: rotate(90deg);
@@ -167,7 +169,7 @@
         cursor: pointer;
     }
     a{
-        transform: translate3d(20rem, 28px, 10px);
+        transform: translate3d(22rem, 28px, 10px);
 
     }
 }

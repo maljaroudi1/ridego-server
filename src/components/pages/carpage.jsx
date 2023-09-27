@@ -17,7 +17,7 @@ function App() {
             aNavClassName='custom-nav'
             />
              <CarContainer/>
-            <div className="footer-car-container">
+            <div className="footer-car-container" style={{top: '284rem'}}>
                 <Footer/>
             </div>
     </div>

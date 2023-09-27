@@ -224,7 +224,10 @@
 
 
 
+.open-info{
+    padding-bottom: 15rem !important;
 
+}
 
 
 //Carousal Container
@@ -460,4 +463,107 @@
 
 .background-active{
   display: block !important;
+}
+
+
+
+
+
+
+
+
+
+
+.book-btn-mobile{
+    border-radius: 5px;
+    background-color: white;
+    width: 8rem;
+    height: 2rem;
+    color: var(--main-color-orange) ;
+    font-weight: 900;
+    border: 1px solid var(--main-color-orange);
+    box-shadow: var(--box-shadow1);
+    cursor: pointer;
+    position: relative;
+    transform: translate3d(7.9rem, 17.5rem, 1rem);
+    min-width: 21rem;
+
+}
+
+.carpayments{
+    transform: translate3d(-7rem, 7rem, 1rem);
+
+    .day{
+        color: var(--main-color-orange);
+        position: absolute;
+        transform: translate3d(0.9rem, -109px, 1rem);
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .month{
+        position: absolute;
+        transform: translate3d(4.5rem, -109px, 1rem);
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .line{
+        transform: translate3d(-6rem, -2rem, 1rem);
+        width: 21rem;
+        height: 1px;
+        position: absolute;
+        background-color: beige;
+    }
+    .line2{
+        transform: rotate(90deg);
+        width: 10rem;
+        height: 1px;
+        position: absolute;
+        margin-left: -0.5rem;
+        margin-top: 4rem;
+        background-color: beige;
+    }
+
+}
+
+.icon-info{
+    position: relative;
+    transform: translate3d(-12rem, 14.5rem, 1rem);
+    .info{
+        margin-top: -3rem;
+        svg{
+            color: var(--main-color-orange);
+        }
+        h6{
+
+            transform: translate3d(1.4rem,-2.6rem,1rem);
+            color: var(--main-color-orange);
+            font-weight: 400;
+            span{
+                color: var(--main-color-orange);
+            }
+        }
+    }
+}
+
+
+.icon-info2{
+    position: relative;
+    transform: translate3d(-6.5rem, 15.5rem, 1rem);
+    .info2{
+        margin-top: -3rem;
+        svg{
+            color: var(--main-color-orange);
+        }
+        h6{
+
+            transform: translate3d(1.4rem,-2.6rem,1rem);
+            color: var(--main-color-orange);
+            font-weight: 400;
+            span{
+                color: var(--main-color-orange);
+            }
+        }
+    }
+}
+
+.hide-for-desktop{
+    display: none;
 }

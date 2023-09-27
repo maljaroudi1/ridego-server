@@ -37,7 +37,9 @@ const Cars = (props) => {
     const carID = props.carID;
     const classForInfo = props.classForInfo;
     const classForSvg = props.classForSvg;
-
+    const carPassengers =  props.carPassengers;
+    const carLiterKM = props.carLiterKM;
+    const carDrivetrain = props.carDrivetrain;
 
 
 
@@ -78,15 +80,7 @@ const Cars = (props) => {
                                 </div>
                         
                     </div>
-                    <Link
-                        activeClass="active" // Class name for active link
-                        to="carform" // Element ID to scroll to
-                        spy={true} // Enable scrolling spy
-                        smooth={true} // Enable smooth scrolling
-                        offset={-70} // Offset to adjust scroll position
-                        duration={500} // Duration of the scroll animation
-                        className="scroll-button"
-                        >
+
                         <motion.button
                                     className='rent-now'
                                     whileTap={{ scale: 0.9 }}
@@ -94,7 +88,7 @@ const Cars = (props) => {
                                     transition={{ duration: 0.4, ease: "easeInOut", type: 'spring' }}
                                     onClick={handleEvent}
                         >{buttonName}</motion.button>
-                    </Link>
+
               </div>
 
 

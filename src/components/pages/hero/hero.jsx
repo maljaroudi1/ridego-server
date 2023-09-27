@@ -9,15 +9,20 @@ import HeroCar2 from '../../../assets/cars/honda/HondaCivicTyperHERO.png'
 import { motion } from "framer-motion"
 import { useInView } from 'react-intersection-observer';
 
+import "primereact/resources/primereact.min.css";
+import "primeflex/primeflex.css";
+import 'primeicons/primeicons.css';
+import 'primeicons/primeicons.css';
 
 //components
 import Navbar from '../../navbar/navbar'
 import Footer from '../../footer/footer'
 import CarousalContainer from '../../cars/carousal-container'
-
+import { Link } from 'react-scroll';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapLocationDot, faCalendarDays, faCarSide} from '@fortawesome/free-solid-svg-icons'
+import { Ripple } from 'primereact/ripple'
 
 
 
@@ -27,10 +32,10 @@ export default function Hero()  {
         //Working steps section
         const [ref, inView] = useInView({
             triggerOnce: false,
-            threshold: 0.2,
+            threshold: 0.1,
 
 
-          });
+        });
 
 
         //About section
@@ -66,7 +71,7 @@ export default function Hero()  {
                 <Navbar/>
                 <div className="hero">
                     <div className="logo">
-                            <img src={logo} alt="" />
+                            {/* <img src={logo} alt="" /> */}
                     </div>
                     <div className="hero-text-container">
                         <h1>Rent The Highest Quality <br/> Cars With Us</h1>
@@ -77,7 +82,30 @@ export default function Hero()  {
                         </p>
                     </div>
                     <div className="hero-btn">
+                    <Link activeClass="active"
+                            to="target3"
+                            spy={true}
+                            smooth={true}
+                            hashSpy={true}
+                            offset={-150}
+                            duration={500}
+                            ignoreCancelEvents={false}
+                            spyThrottle={500}
 
+                            >
+
+                            <motion.button
+                                className='book-hero-btn'
+                                whileTap={{ scale: 0.9 }}
+
+                                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+
+                            >
+                            Book Your Ride
+                            <Ripple/>
+                            </motion.button>
+
+                            </Link>
 
                             <motion.button
                                 className='sell-btn'
@@ -101,8 +129,17 @@ export default function Hero()  {
 
                     <div className="working-steps" id='target1'>
                         <h2>Our Working Steps</h2>
+
+
+
+
+
+
+
+
+
                         <div className="icon-container">
-                            <motion.div className="icon"
+                            <motion.div className="icon map"
                                 ref={ref}
                                 initial="hidden"
                                 animate={inView ? 'visible' : 'hidden'}
@@ -126,7 +163,7 @@ export default function Hero()  {
                                  transition={{duration: 0.5}}
                                 >Find the nearest Swift Ride point and book your car.</motion.p>
                             </motion.div>
-                            <motion.div className="icon"
+                            <motion.div className="icon calander"
                                 ref={ref}
                                 initial="hidden"
                                 animate={inView ? 'visible' : 'hidden'}
@@ -157,7 +194,7 @@ export default function Hero()  {
 
 
                             </motion.div>
-                            <motion.div className="icon"
+                            <motion.div className="icon car-icon"
                                 ref={ref}
                                 initial="hidden"
                                 animate={inView ? 'visible' : 'hidden'}
@@ -165,20 +202,24 @@ export default function Hero()  {
                                 transition={{duration: 0.5}}
                             >
                                  <FontAwesomeIcon icon={faCarSide} />
+
                                  <motion.h5
                                     ref={ref}
                                     initial="hidden"
                                     animate={inView ? 'visible' : 'hidden'}
                                     variants={fadeInFromLeftText}
                                     transition={{duration: 0.5}}
-                                 >Book Your Car</motion.h5>
+                                 >Book Your Car
+                                 </motion.h5>
+
                                  <motion.p
                                     ref={ref}
                                     initial="hidden"
                                     animate={inView ? 'visible' : 'hidden'}
                                     variants={fadeInFromLeftText}
                                     transition={{duration: 0.5}}
-                                 >Book your nice car with ease in one single click</motion.p>
+                                 >Book your nice car with ease in one single click
+                                 </motion.p>
                             </motion.div>
                         </div>
                     </div>
@@ -205,6 +246,7 @@ export default function Hero()  {
                     </motion.div>
                 </div>
                 <CarousalContainer/>
+
                  <Footer/>
 
 
