@@ -7,7 +7,7 @@ const carData = [
     {
 
         carID: "1",
-        carImg: "/src/assets/cars/bmw/bmwZroadster.png",
+        carImg: "../../assets/cars/bmw/bmwZroadster.png",
         carName: "BMW Z-Roadster",
         carPriceDay: "$350/Day",
         carPriceMonth: "$10500/Month",
