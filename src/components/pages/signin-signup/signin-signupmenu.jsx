@@ -16,7 +16,13 @@ const Portal = (props) => {
 
  // set a cookie To expire 24 hours
 
-const isLoggedIn = JSON.parse(Cookies.get('isLoggedIn'));
+let isLoggedIn;
+
+try{
+  isLoggedIn = JSON.parse(Cookies.get('isLoggedIn'));
+}catch(error){
+  console.log(error)
+}
 
 const email2  = Cookies.get('email');
 
