@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
 import logo from '../../assets/logo/logo-white.png'
 import "primereact/resources/themes/lara-light-indigo/theme.css";
@@ -17,6 +17,7 @@ import { Ripple } from 'primereact/ripple';
 import PrimeReactContext from 'primereact/api';
 PrimeReactContext.ripple = true;
 import Portal from '../../components/pages/signin-signup/signin-signupmenu'
+import Cookies from 'js-cookie';
 
 
 
@@ -29,6 +30,13 @@ const Navbar = (props) => {
 
     const [notHiddenBtn, setNotHiddenBtn] = useState(true);
 
+    const email = Cookies.get('email')
+    const isLoggedIn = JSON.parse(Cookies.get('isLoggedIn'));
+    const handleSignOut = () => {
+        Cookies.set('isLoggedIn', 'false');
+        Cookies.set('email', 'null');
+        window.location.href = '/';
+    }
 
   //For the menu
   const [ notHidden, setNotHidden] = useState(true);
@@ -36,6 +44,7 @@ const Navbar = (props) => {
     setNotHidden(!notHidden);
     setNotHiddenBtn(!notHiddenBtn);
 }
+
 
     return (
         <>
@@ -103,7 +112,7 @@ const Navbar = (props) => {
                             </a>
                             </li>
                                 <li>
-                                        <a className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full">
+                                        <a href="/faq" style={{textDecoration: 'none'}} className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-gray-400 hover:text-white hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full">
                                             <Ripple/>
                                             <i className="pi pi-question-circle mr-2"></i>
                                             <span>FAQ</span>
@@ -138,16 +147,35 @@ const Navbar = (props) => {
 
                             </li>
                             <li className="border-top-1 border-gray-800 lg:border-top-none">
-                            <a className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center hover:bg-gray-800 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full">
+                                <a className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center  font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full hover:bg-gray-800">
 
-                                {/* Make not hidden 3*/}
-                                <div className="block lg:hidden">
-                                <div className="text-white font-medium">Josephine Lillard</div>
-                                <span className="text-gray-400 font-medium text-sm">Marketing Specialist</span>
-                                </div>
-                                <span role="presentation" className="p-ink" style={{ height: '64px', width: '64px', top: '2.60004px', left: '415.2px' }}></span>
-                            </a>
+
+                                    <div className="block lg:hidden ">
+                                        <div className="text-white font-medium " style={{textAlign: 'center'}}>
+                                            <a href={isLoggedIn ? '/dashboard' : '/auth/login'} style={{textDecoration: 'none', color:'white'}}>
+                                                {isLoggedIn ? 'Dashboard' : 'Sign in'}
+                                            </a>
+                                        </div>
+                                        <span className="text-gray-400 font-medium text-sm">{isLoggedIn ? email  : ''}</span>
+                                    </div>
+
+                                    <span role="presentation" className="p-ink" style={{ height: '64px', width: '64px', top: '2.60004px', left: '415.2px' }}></span>
+                                </a>
+
                             </li>
+                            <li className="border-top-1 border-gray-800 lg:border-top-none">
+                                    <a className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center  font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full hover:bg-gray-800">
+                                        <div className="block lg:hidden ">
+                                            <div className="text-white font-medium " style={{textAlign: 'center'}}>
+                                                <a href={isLoggedIn ? '' : '/auth/register'} style={{textDecoration: 'none', color:'white'}}
+                                                    onClick={isLoggedIn ? handleSignOut : () => { }}
+                                                >
+                                                    {isLoggedIn ? 'Sign out' : 'Sign up'}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
                         </ul>
                     </div>
                 </div>

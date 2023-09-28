@@ -44,9 +44,100 @@
 
 
 
+@media screen and (max-width: 1800px){
+    .media-car{
+        margin-right: -37rem !important;
+    }
+}
+
+
+
+
+
+
+//Large Laptop
+@media screen and (max-width: 1440px){
+    .media-car{
+        margin-right: -25rem !important;
+    }
+    .flex{
+        .mobile-adjust{
+            margin-right: -6rem !important;
+            margin-left: 3rem !important;
+        }
+
+
+
+    }
+    .grid{
+        .change-width-media768{
+            margin-left: 49rem !important;
+            margin-top: -15.5rem !important;
+            .laptop{
+                width: 46.1% !important;
+            }
+        }
+    }
+}
+
+
+//Small Laptop
+@media screen and (max-width: 1024px){
+
+    .grid{
+        .change-width-media768{
+            width: 100% !important;
+            margin-left: 0rem !important;
+            margin-top: 0rem !important;
+            .laptop{
+                width: 100% !important;
+            }
+        }
+    }
+
+
+    //for data table in location navbar
+    .flex{
+        .mobile-adjust{
+            position: relative !important;
+            width: 55rem !important;
+            margin-right: -23rem !important;
+            margin-left: -1rem !important;
+            border: 1px solid lightgray;
+        }
+
+
+    }
+}
+
 
 // Google mobile
 @media screen and (max-width: 769px){
+
+
+    .change-width-media768{
+        width: 100%;
+    }
+    .min-h-screen{
+        .app-media{
+            left: -48rem !important;
+        }
+        .show-sidebar {
+            transition: all 0.4s ease-in-out;
+            margin-left: 47rem !important;
+            position: absolute;
+        }
+    }
+    //for car booking information dashboard
+    .media-car{
+        padding-left: 9.5rem !important;
+        padding-right: 9.5rem !important;
+        margin-left: 12rem !important;
+        margin-right: -27rem !important;
+        transform: translateX(-19.5rem) !important;
+        padding-bottom: 7rem !important;
+        margin-top: 1rem !important;
+    }
     .map-container{
         width: 100% !important;
     }
@@ -186,11 +277,14 @@
             }
 
     }
+
+    //for data table in location navbar
     .flex{
         .mobile-adjust{
             position: relative !important;
-            width: 31rem !important;
-            margin-right: 0rem !important;
+            width: 43rem !important;
+            margin-right: -20rem !important;
+            margin-left: 4rem !important;
         }
 
 
@@ -505,6 +599,20 @@
     .book-btn-mobile {
         min-width: 18rem !important;
     }
+    .flex{
+        .mobile-adjust{
+            position: relative !important;
+            width: 27.5rem !important;
+            margin-right: 5rem !important;
+            margin-left: 5rem !important;
+        }
+
+
+    }
+    .locatebtn {
+        width: 8rem !important;
+        transform: translateX(-16.5rem) !important;
+    }
 
 }
 
@@ -521,96 +629,103 @@
         .hero-text-container {
             transform: translate3d(1rem, 3rem, -1rem) !important;
         }
-        .hero-btn{
-            .sell-btn {
-                transform: translateX(92px) !important;
-            }
+        .hero-btn .sell-btn {
+            transform: translateX(92px) !important;
         }
-       .hero-blob {
+        .hero-blob {
             svg {
                 width: 152% !important;
                 transform: translate3d(3rem, 5rem, 10px) !important;
             }
-            img{
+            img {
                 width: 26rem !important;
                 transform: translate3d(0px, -27rem, 10px) !important;
-           }
-       }
-       .working-steps{
-            h2{
+            }
+        }
+        .working-steps {
+            h2 {
                 font-size: 2.2rem !important;
             }
-            .icon-container{
-                .icon {
-                    p{
-                        font-size: 0.9rem !important;
-                    }
-
-                }
+            .icon-container .icon p {
+                font-size: 0.9rem !important;
             }
-       }
-       .about-us {
+        }
+        .about-us {
             img {
                 width: 32% !important;
                 margin-top: -22rem !important;
             }
-            h1{
+            h1 {
                 transform: translate3d(-51rem, -45rem, 1rem) !important;
                 width: 29% !important;
                 margin-left: 63rem !important;
                 font-size: 1.8rem !important;
             }
-            p{
+            p {
                 transform: translate3d(-52rem, -46rem, 1rem) !important;
                 width: 26% !important;
                 padding: 1rem !important;
                 font-size: 0.9rem !important;
             }
         }
-
+    }
+    .flex .mobile-adjust {
+        width: 24.5rem !important;
     }
 
+    .locatebtn {
+        width: 8rem !important;
+        transform: translate3d(-29.5rem, 3rem, 10px) !important;
+    }
 
     .bg-teal-100 {
         transform: translateX(-4.5rem) !important;
     }
+
     //search bar
-    .p-autocomplete{
+    .p-autocomplete {
         transform: translate3d(7rem, 7rem, 1rem) !important;
     }
-    .car-name{
-        span{
-            transform: translate3d(-3rem, -1.5rem, 1rem);
-            text-transform: uppercase;
-            font-size: 1rem !important;
-        }
+
+    .car-name span {
+        transform: translate3d(-3rem, -1.5rem, 1rem);
+        text-transform: uppercase;
+        font-size: 1rem !important;
     }
-    .more-info{
+
+    .more-info {
         transform: translate3d(-3rem, 0.5rem, 1rem) !important;
     }
-    .toggle-btn{
+
+    .toggle-btn {
         transform: translateX(-6.5rem) !important;
         margin-top: 0.5rem !important;
     }
-    .carpayments  {
+
+    .carpayments {
         transform: translate3d(-4rem, 6rem, 1rem) !important;
-        .month{
+        .month {
             transform: translate3d(6.5rem, -91px, 1rem) !important;
         }
-        .day{
+        .day {
             transform: translate3d(3rem, -91px, 1rem) !important;
         }
     }
-    .icon-info{
+
+    .icon-info {
         transform: translate3d(-7.5rem, 14.5rem, 1rem) !important;
     }
-    .icon-info2{
+
+    .icon-info2 {
         transform: translate3d(-5rem, 15.5rem, 1rem) !important;
     }
+
     .book-btn-mobile {
         min-width: 15rem !important;
     }
+
 }
+
 
 
 
@@ -737,5 +852,10 @@
     }
     .book-btn-mobile {
         min-width: 13rem !important;
+    }
+    .flex {
+        .mobile-adjust {
+            width: 21rem !important;
+        }
     }
 }

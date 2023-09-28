@@ -170,13 +170,29 @@ export default function  carContainer()   {
                     { carType: 'Sport', value: ' Sport'},
                     { carType: 'Sedan', value: ' Sedan' },
                     { carType: 'SUV', value: ' SUV' }
-                  ];
+                ];
 
                  const [sortCars, setSortCars] = useState(sortByCarType[0].value);
 
+                 const [sortByDecAcen, setSortByDecAcen] = useState('Ascending')
+                 const sortByCarAcen2 = [
+                    {
+                      label: 'Ascending',
+                      sortFunction: (a, b) => a.localeCompare(b), // A-Z sorting
+                    },
+                    {
+                      label: 'Descending',
+                      sortFunction: (a, b) => b.localeCompare(a), // Z-A sorting
+                    },
+                  ];
 
-
-
+                  const toggleSortOrder = () => {
+                    if (sortByDecAcen === 'Ascending') {
+                      setSortByDecAcen('Descending');
+                    } else {
+                      setSortByDecAcen('Ascending');
+                    }
+                  };
 
 
                  const [openCarID, setOpenCarID] = useState(null);
@@ -209,8 +225,6 @@ export default function  carContainer()   {
                     <div className="nav-bar-under " style={{paddingBottom: '-5px', paddingTop: '-5px'}}>
 
                             <AutoComplete field="name"
-
-
                             className='p-ripple card p-fluid '
                             value={search}
                             suggestions={car}
@@ -228,7 +242,13 @@ export default function  carContainer()   {
                             style={{transform: "translate3d(1rem,-1.5rem,1rem)"}}
                             />
 
-
+                            <SelectButton
+                            value={sortByDecAcen}
+                            onChange={(e) => setSortByDecAcen(e.value)}
+                            options={sortByCarAcen2.map((option) => option.label)}
+                            className="select-btn"
+                            style={{ transform: "translate3d(0.9rem, -0.5rem, 1rem)" }}
+                            />
 
                     </div>
 
@@ -242,9 +262,18 @@ export default function  carContainer()   {
                                 : car.carName.toLocaleLowerCase().includes(search)
                                 ? car
                                 : car.carType.toLocaleLowerCase().includes(search)
+
                             }).filter((car) => {
                                 return (sortCars === null || car.carType === sortCars)
-                            }).map((car) => (
+                            }).sort((a, b) => {
+                                if (sortByDecAcen === 'Ascending') {
+                                  return a.carName.localeCompare(b.carName);
+                                } else {
+                                  return b.carName.localeCompare(a.carName);
+                                }
+
+
+                              }).map((car) => (
                                     <div key={car.carID} className='col-12 lg:col-4 p-3'>
                                         <div className={`p-3 border-round shadow-2 flex align-items-center surface-card ${ openCarID === car.carID ? 'open-info' : ''}`} style={{ overflow: 'hidden' }}>
                                             <motion.button
@@ -344,7 +373,15 @@ export default function  carContainer()   {
                                 : car.carType.toLocaleLowerCase().includes(search)
                             }).filter((car) => {
                                 return (sortCars === null || car.carType === sortCars)
-                            }).map((car, index) => (
+                            }).sort((a, b) => {
+                                if (sortByDecAcen === 'Ascending') {
+                                  return a.carName.localeCompare(b.carName);
+                                } else {
+                                  return b.carName.localeCompare(a.carName);
+                                }
+
+
+                              }).map((car, index) => (
                                    <Cars
                                     key={index}
                                     carImg={car.carImg}

@@ -7,11 +7,13 @@ import Booking from './pages/booking-form/booking'
 import Dashboard from '../components/pages/dashboard/dashboard'
  import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Locations from '../components/pages/locations/location'
-
+import Faq from '../components/pages/faq/faq'
 import Datatable from '../components/datatable/datatable'
+import Cookies from 'js-cookie'
 export default function routes() {
-    const isLoggedIn = JSON.parse(window.localStorage.getItem('isNotLoggedIn'));
-    const isNotLoggedIn = !isLoggedIn;
+
+
+    const isLoggedIn = Cookies.get('isLoggedIn');
 
     return(
 
@@ -35,11 +37,11 @@ export default function routes() {
 
                         <Route exact path='/locations' element={<Locations/>} ></Route>
                         <Route exact path='/booking' element={<Booking/>} ></Route>
-                        <Route exact path='/register' element={<Register/>} ></Route>
+                        <Route exact path='/auth/register' element={<Register/>} ></Route>
                         <Route exact path='/auth/login' element={<Login/>} ></Route>
-                        <Route exact path='/test' element={<Datatable/>} ></Route>
+                        <Route exact path='/faq' element={<Faq/>} ></Route>
                         <Route exact path= '/dashboard'
-                        element={isNotLoggedIn ? (
+                        element={isLoggedIn ? (
                             <Dashboard/>
                                      ) : (
                             <Navigate to="/auth/login" />

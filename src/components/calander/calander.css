@@ -50,7 +50,7 @@
   transform: translate3d(58rem, 2rem, 1rem) !important;
 }
 .container .p-calendar {
-  transform: translate3d(51rem, 2rem, 1rem);
+  transform: translate3d(47rem, 2rem, 1rem);
 }
 .container .p-calendar input {
   position: relative !important;
@@ -63,17 +63,17 @@
   padding: 1rem;
   margin-top: 1rem;
   margin-left: 1rem;
-  transform: translateX(-37rem);
+  transform: translateX(-33rem);
   border: 1px var(--main-color-orange) solid;
   border-radius: 5px;
   outline-color: var(--main-color-orange);
   position: absolute;
 }
 .container .car-input {
-  transform: translate3d(-20.5rem, 5rem, 1rem) !important;
+  transform: translate3d(-18.5rem, 5rem, 1rem) !important;
 }
 .container .email {
-  transform: translateX(-20.5rem) !important;
+  transform: translateX(-18.5rem) !important;
 }
 .container select {
   padding: 1rem;
@@ -89,7 +89,7 @@
   position: absolute;
 }
 .container .location {
-  transform: translate3d(-37rem, 5rem, 1rem) !important;
+  transform: translate3d(-33rem, 5rem, 1rem) !important;
 }
 .container line {
   height: 1%;
@@ -163,7 +163,7 @@
   cursor: pointer;
 }
 .container a {
-  transform: translate3d(22rem, 28px, 10px);
+  transform: translate3d(20rem, 28px, 10px);
 }
 
 .calOne {

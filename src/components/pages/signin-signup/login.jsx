@@ -14,6 +14,7 @@ import "primeflex/primeflex.css";
 import 'primeicons/primeicons.css';
 import { ProgressBar } from 'primereact/progressbar';
 import { gapi } from 'gapi-script';
+import Cookies from 'js-cookie';
 
 
 
@@ -81,20 +82,13 @@ const handleLogin = async (e) => {
           });
 
 
-
-          //we are getting email in the log, but not name, check you axios.get method and server.js for why that is the case
-          const userName = response2.config.name;
           const userEmail = response2.config.email;
 
-
-          window.localStorage.setItem('email', JSON.stringify(userEmail));
-          console.log(JSON.stringify(userName))
-          console.log(JSON.stringify(userEmail))
-          console.log(response)
-          console.log(response2)
-
-          let isNotLoggedIn = false;
-          window.localStorage.setItem('isNotLoggedIn', JSON.stringify(isNotLoggedIn))
+          const date = new Date();
+          const hours = 24; // set the expiration time too 24 hours
+          const settingTime = date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+          Cookies.set('isLoggedIn', 'true', { expires: new Date(settingTime)});
+          Cookies.set('email', `${userEmail}`, { expires: new Date(settingTime)});
 
 
 

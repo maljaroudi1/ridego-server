@@ -124,7 +124,7 @@ export default function Booking()  {
     return (
         <>
           <ToastContainer/>
-            <div className=" px-4 py-8 md:px-6 lg:px-8">
+            <div className=" px-4 py-8 md:px-6 lg-smaller">
                 <div className="center-logo" style={{display: 'flex', justifyContent: 'center', width: '100%'}}>
                      <img src={logo} alt="" style={{width: '25rem'}} />
                 </div>

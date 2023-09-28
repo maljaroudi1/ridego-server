@@ -34,10 +34,10 @@ export default function Dashboard() {
         setSelected(buttonName);
 
     }
-
-    const email = JSON.parse(window.localStorage.getItem('email'));
+    let email = (Cookies.get('email'));
     const [username, domain] = email.split('@');
     const [firstletter, domail] = email[0].toUpperCase();
+
 
 
     const [showSideBar, setShowSideBar] = useState('');
@@ -46,18 +46,16 @@ export default function Dashboard() {
 
 
 
-
-
     let PickupTime;
     let ReturnTime;
     let Location;
-
+    let CarBooked;
 
 let filteredCars = [];
 try{
 
 
-
+     CarBooked = JSON.parse(Cookies.get('CarBooked'));
 
 
 
@@ -88,8 +86,8 @@ try{
 
     const theCookie = Cookies.get('CarID');
     let parseId = 0;
-    PickupTime = (pickupDateFormat);
-    ReturnTime = (returnDateFormat);
+    PickupTime = pickupDateFormat;
+    ReturnTime = returnDateFormat;
     Location = JSON.parse(theLocationCookie)
     parseId = JSON.parse(theCookie)
     filteredCars = carData.filter((car) => car.carID === parseId);
@@ -208,15 +206,12 @@ try{
                             <a className={`p-ripple cursor-pointer block lg:hidden text-700 mr-3 ${showSideBar === 'clicked' ? 'show-sidebar' : ''}`}
                                 onClick={() => setShowSideBar(showSideBar === 'clicked' ? '' : 'clicked')}
                             >
-                                <i className="pi pi-bars text-4xl"></i>
+                                <i className="pi  pi-plus text-2xl " style={{color:'black'}}></i>
                                 <span role="presentation" className="p-ink" style={{ height: '0px', width: '0px' }}></span>
                             </a>
                             </div>
-                            <img src={logo} alt="Image" height="30" className="block lg:hidden" />
-                            <a className="p-ripple cursor-pointer block lg:hidden text-700">
-                            <i className="pi pi-ellipsis-v text-2xl"></i>
-                            <span role="presentation" className="p-ink" style={{ height: '0px', width: '0px' }}></span>
-                            </a>
+
+
                             <ul className="list-none p-0 m-0 hidden lg:flex lg:align-items-center select-none lg:flex-row lg:w-full surface-section border-1 lg:border-none surface-border right-0 top-100 z-1 shadow-2 lg:shadow-none absolute lg:static">
 
 
@@ -248,12 +243,14 @@ try{
                                                 {`${email}`}
                                             </div>
                                         </li>
-                                        <li className="flex align-items-center py-3 px-2 flex-wrap">
+                                        {filteredCars.map((filteredCar) => (
+                                        <li className="flex align-items-center py-3 px-2 flex-wrap" key={filteredCar.id }>
                                             <div className="text-500 w-full md:w-2 font-medium">Current Bookings</div>
                                             <div className="text-900 w-full md:w-10 line-height-3">
-                                                {`${email}`}
+                                            {CarBooked ? filteredCar.carName : ''}
                                             </div>
                                         </li>
+                                        ))}
 
 
 
@@ -263,10 +260,10 @@ try{
 
                                 </div>
                                 <div className={`condotional-render ${selectedButton !== 'booking' ? 'hidden' : ''}`}>
-                                <div className="surface-ground px-4 py-8 md:px-6 lg:px-8">
+                                <div className="  md:px-6 lg:px-8 media-car">
 
 
-                                    <div className="surface-ground">
+                                    <div>
                                         <div className="grid">
 
 
@@ -284,15 +281,7 @@ try{
                                                     <p>Car Type: {filteredCar.carType}</p>
                                                     <p>Location: {`${Location}`}</p>
                                                 </div>
-                                                {/* <button className="p-button p-component p-button-rounded p-button-text p-button-icon-only">
-                                                    <span className="p-button-icon p-c pi pi-download"></span>
-                                                    <span className="p-button-label p-c">&nbsp;</span>
-                                                    <span
-                                                    role="presentation"
-                                                    className="p-ink"
-                                                    style={{ height: '48px', width: '48px' }}
-                                                    ></span>
-                                                </button> */}
+
                                                 </div>
                                                 <ul className="list-none m-0 p-0">
                                                 <li className="px-0 py-2 flex justify-content-between align-items-center border-bottom-1 surface-border">

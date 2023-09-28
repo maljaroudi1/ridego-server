@@ -1,14 +1,13 @@
 
 import './location.css';
 
-import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
-import bmw from '../../../assets/cars/bmw/bmw3SeriesSedan.png'
+
+
 import {  useEffect, useRef, useState } from 'react';
 import NavBar from '../../navbar/navbar'
 import Footer from '../../footer/footer'
 import Datatable from '../../datatable/datatable'
-import "primereact/resources/themes/lara-light-indigo/theme.css";
+
 //core
 import "primereact/resources/primereact.min.css";
 import "primeflex/primeflex.css";
@@ -173,12 +172,12 @@ export default function Locations() {
             </div>
           </div>
           {/* Use infobox */}
-          <div className="col-12 md:col-6">
+          <div className="col-12 md:col-6 change-width-media768 ">
             <button className="locatebtn" onClick={handleLocateButtonClick}>Locate My Position</button>
               <GoogleMap
               zoom={10}
               center={currentPosition || { lat: 43.57466208215668, lng: -79.6477375403969 }}
-              mapContainerClassName='map-container '
+              mapContainerClassName='map-container laptop'
               mapContainerStyle={{width:'50%', height: '70%', position: 'absolute', marginLeft: '-0.5rem'}}
               >
               {currentPosition && <MarkerF position={currentPosition}  />}

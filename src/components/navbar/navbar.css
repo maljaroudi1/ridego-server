@@ -1,4 +1,62 @@
+@media screen and (max-width: 1800px) {
+  .media-car {
+    margin-right: -37rem !important;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .media-car {
+    margin-right: -25rem !important;
+  }
+  .flex .mobile-adjust {
+    margin-right: -6rem !important;
+    margin-left: 3rem !important;
+  }
+  .grid .change-width-media768 {
+    margin-left: 49rem !important;
+    margin-top: -15.5rem !important;
+  }
+  .grid .change-width-media768 .laptop {
+    width: 46.1% !important;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .grid .change-width-media768 {
+    width: 100% !important;
+    margin-left: 0rem !important;
+    margin-top: 0rem !important;
+  }
+  .grid .change-width-media768 .laptop {
+    width: 100% !important;
+  }
+  .flex .mobile-adjust {
+    position: relative !important;
+    width: 55rem !important;
+    margin-right: -23rem !important;
+    margin-left: -1rem !important;
+    border: 1px solid lightgray;
+  }
+}
 @media screen and (max-width: 769px) {
+  .change-width-media768 {
+    width: 100%;
+  }
+  .min-h-screen .app-media {
+    left: -48rem !important;
+  }
+  .min-h-screen .show-sidebar {
+    transition: all 0.4s ease-in-out;
+    margin-left: 47rem !important;
+    position: absolute;
+  }
+  .media-car {
+    padding-left: 9.5rem !important;
+    padding-right: 9.5rem !important;
+    margin-left: 12rem !important;
+    margin-right: -27rem !important;
+    transform: translateX(-19.5rem) !important;
+    padding-bottom: 7rem !important;
+    margin-top: 1rem !important;
+  }
   .map-container {
     width: 100% !important;
   }
@@ -125,8 +183,9 @@
   }
   .flex .mobile-adjust {
     position: relative !important;
-    width: 31rem !important;
-    margin-right: 0rem !important;
+    width: 43rem !important;
+    margin-right: -20rem !important;
+    margin-left: 4rem !important;
   }
   .car-name span {
     width: 100rem !important;
@@ -373,6 +432,16 @@
   .book-btn-mobile {
     min-width: 18rem !important;
   }
+  .flex .mobile-adjust {
+    position: relative !important;
+    width: 27.5rem !important;
+    margin-right: 5rem !important;
+    margin-left: 5rem !important;
+  }
+  .locatebtn {
+    width: 8rem !important;
+    transform: translateX(-16.5rem) !important;
+  }
 }
 @media screen and (max-width: 375px) {
   .hero .hero-text-container {
@@ -410,6 +479,13 @@
     width: 26% !important;
     padding: 1rem !important;
     font-size: 0.9rem !important;
+  }
+  .flex .mobile-adjust {
+    width: 24.5rem !important;
+  }
+  .locatebtn {
+    width: 8rem !important;
+    transform: translate3d(-29.5rem, 3rem, 10px) !important;
   }
   .bg-teal-100 {
     transform: translateX(-4.5rem) !important;
@@ -551,6 +627,9 @@
   }
   .book-btn-mobile {
     min-width: 13rem !important;
+  }
+  .flex .mobile-adjust {
+    width: 21rem !important;
   }
 }
 :root {
