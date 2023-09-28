@@ -31,7 +31,12 @@ const Navbar = (props) => {
     const [notHiddenBtn, setNotHiddenBtn] = useState(true);
 
     const email = Cookies.get('email')
-    const isLoggedIn = JSON.parse(Cookies.get('isLoggedIn'));
+    let isLoggedIn;
+    try{
+        isLoggedIn = JSON.parse(Cookies.get('isLoggedIn'));
+    }catch(error){
+        console.log(error)
+    }
     const handleSignOut = () => {
         Cookies.set('isLoggedIn', 'false');
         Cookies.set('email', 'null');
