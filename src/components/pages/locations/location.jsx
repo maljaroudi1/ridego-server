@@ -8,6 +8,7 @@ import NavBar from '../../navbar/navbar'
 import Footer from '../../footer/footer'
 import Datatable from '../../datatable/datatable'
 
+import axios from 'axios';
 //core
 import "primereact/resources/primereact.min.css";
 import "primeflex/primeflex.css";
@@ -19,15 +20,20 @@ import {GoogleMap, useLoadScript, MarkerF, InfoWindow, DirectionsService, Direct
 import Cookies from 'js-cookie';
 export default function Locations() {
 
+  const GoogleAPiKey = import.meta.env.VITE_GOOGLE;
+
+  console.log((GoogleAPiKey))
+
+
 
 
   const {isLoaded, loadError } = useLoadScript({
-      googleMapsApiKey: "AIzaSyB9KO5GpHOx1vD1GJTWwtptnNT_f-N_Jkk",
+
+       googleMapsApiKey: GoogleAPiKey
+
 
 
   });
-
-
 
 
   if (loadError) {
@@ -42,8 +48,6 @@ export default function Locations() {
 
 
  function Map() {
-
-
 
 
 
@@ -151,6 +155,10 @@ export default function Locations() {
       console.error("Error: Your browser doesn't support geolocation.");
     }
   };
+
+
+
+
 
     return(
     <>

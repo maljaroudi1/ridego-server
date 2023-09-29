@@ -4,25 +4,37 @@ const bodyParser = require('express').json;
 const bcrypt = require("bcrypt");
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-
-
+require('dotenv').config();
+const axios = require('axios')
 const compression = require('compression');
 app.use(compression());
 
 
 
+
+
+
+const port = process.env.PORT || 5000;
+
 const payload = {
   userId: 1
 };
 
+const apiKeyGoogle = process.env.GOOGLE_MAPS_APIKEY;
+const expectedApiKey = apiKeyGoogle; // Replace with your actual API key
 
-const secretKey = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
+
+const theSecretKey = process.env.SECRET_KEY;
+const mongoURI = process.env.MONGODB_URI;
+
+
+
+const token = jwt.sign(payload, theSecretKey, { expiresIn: '1h' });
 
 // Connecting to Database
 async function startApp() {
   try {
-    await mongoose.connect('mongodb+srv://meojax:Gta5forever@register.qy8ljq8.mongodb.net/customerinfo', {
+    await mongoose.connect(mongoURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       family: 4
@@ -153,13 +165,13 @@ const UserGoogle = mongoose.model('google-users-info', UserSchemaGoogle);
 
 
 
-
 //Always declare cors above all get and post requests
 app.use(cors({
   origin:'http://localhost:5173',
   allowedHeaders: 'Content-Type,Authorization',
   allowMethods: '*'
 }));
+
 
 
 
@@ -322,7 +334,7 @@ app.post('/customerinfo/customer-info', async (req, res) => {
 
 
 //Listinng on the port 5000 for post and get request for database
-const port = 5000;
+
 app.listen(port, () => {
     console.log(`Server Running on port ${port}`);
    

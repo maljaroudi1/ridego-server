@@ -108,6 +108,7 @@ export default function Hero()  {
                             </Link>
 
                             <motion.button
+                            style={{transform: 'translateX(2rem)'}}
                                 className='sell-btn'
                                 whileTap={{ scale: 0.9 }}
                                 whileHover={{ backgroundColor: "#FD8800", color:"white" }}
