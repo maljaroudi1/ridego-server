@@ -134,7 +134,7 @@ const handleLogin = async (e) => {
 const [userNameGoogle, setGoogleUserName] = useState("");
 const [userEmailGoogle, setGoogleEmail] = useState("");
 const [userIDGoogle, setGoogleID] = useState("");
-
+const GoogleAPiKey2 = import.meta.env.VITE_CLIENTID;
   // Import the Google API script
   const script = document.createElement('script');
   script.src = 'https://apis.google.com/js/platform.js';
@@ -143,7 +143,7 @@ const [userIDGoogle, setGoogleID] = useState("");
     // Initialize Google API
     gapi.load('auth2', () => {
       gapi.auth2.init({
-        client_id: "161956769464-1gejcfnjibep56enqvhrslq59fn0ls51.apps.googleusercontent.com",
+        client_id: GoogleAPiKey2,
       });
     });
   };
@@ -175,7 +175,7 @@ const [userIDGoogle, setGoogleID] = useState("");
 
 
     try{
-      const response = await axios.post('http://localhost:5000/google-users-info', {
+      const response = await axios.post('https://car-rental-rentgo.vercel.app/google-users-info', {
         userNameGoogle,
         userEmailGoogle,
         userIDGoogle,
