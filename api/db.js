@@ -37,8 +37,8 @@ async function startApp()  {
     }
 }
   //Initilize function to connect to database
-startApp();
-app.use(login)
+startApp(app.use(login)
 app.use(register)
 app.use(booking)
 app.use(googlelogin)
+);

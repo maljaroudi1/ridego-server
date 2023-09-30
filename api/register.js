@@ -43,7 +43,7 @@
 
 
 // // Post request to create a user
-// app.post('/customerinfo/customer-info', async (req, res) => {
+// app.post('/customerinfo/customer-infos', async (req, res) => {
 //   try {
 //     const newUser = await User.create(req.body);
 //     res.status(201).json(newUser);
@@ -54,7 +54,7 @@
 // });
 
 
-// app.get('/customerinfo/customer-info', async (req, res) => {
+// app.get('/customerinfo/customer-infos', async (req, res) => {
 //     const { name, email } = req.query;
 //     try {
 //       const existingUsers = await User.find({ name, email });

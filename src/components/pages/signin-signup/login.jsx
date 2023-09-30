@@ -42,53 +42,92 @@ export default function Login() {
 const [notActive, setNotActive] = useState('');
 const progressRef = useRef(null);
 
+// const handleLogin = async (e) => {
+//   e.preventDefault();
+//   if (email === '' || password === '') {
+//     toast.warn('Empty Fields!');
+//   } else if (!emailRegex.test(email)) {
+//     toast.error('Invalid Email!');
+//   } else {
+//     try {
+//       const response = await axios.post('https://car-rental-rentgo.vercel.app/customerinfo/customer-infos', {
+//         email,
+//         password,
+//       });
+//       if (response.data.token) {
+//         toast.success('Login successful');
+//         setNotActive('active-progress');
+
+
+
+
+//           const userEmail = response.config.email;
+
+//           const date = new Date();
+//           const hours = 24; // set the expiration time too 24 hours
+//           const settingTime = date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+//           Cookies.set('isLoggedIn', 'true', { expires: new Date(settingTime)});
+//           Cookies.set('email', `${userEmail}`, { expires: new Date(settingTime)});
+
+
+
+//         setTimeout(() => {
+//           window.location.href = "/"
+
+//         }, 5000);
+
+
+//       } else {
+//         toast.error('Login unsuccessful');
+//         // setTimeout(() => {
+//         //   window.location.reload();
+//         // }, 3000);
+//       }
+//     } catch (error) {
+//       console.error(error);
+//       toast.error('Login failed');
+//       // setTimeout(() => {
+//       //   window.location.reload();
+//       // }, 3000);
+//     }
+//   }
+// };
 const handleLogin = async (e) => {
   e.preventDefault();
-  if (email === '' || password === '') {
+
+  // Assuming you have 'email' and 'password' from your form inputs
+  const { email, password } = e.target;
+
+  if (email.value === '' || password.value === '') {
     toast.warn('Empty Fields!');
-  } else if (!emailRegex.test(email)) {
+  } else if (!emailRegex.test(email.value)) {
     toast.error('Invalid Email!');
   } else {
     try {
-      const response = await axios.post('https://car-rental-rentgo.vercel.app/customerinfo/customer-infos', {
-        email,
-        password,
+      const response = await axios.post('/api/login', {  // Replace with your serverless function endpoint
+        email: email.value,
+        password: password.value,
       });
       if (response.data.token) {
         toast.success('Login successful');
         setNotActive('active-progress');
 
-
-
-
-          const userEmail = response.config.email;
-
-          const date = new Date();
-          const hours = 24; // set the expiration time too 24 hours
-          const settingTime = date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
-          Cookies.set('isLoggedIn', 'true', { expires: new Date(settingTime)});
-          Cookies.set('email', `${userEmail}`, { expires: new Date(settingTime)});
-
-
+        const userEmail = response.config.email;
+        const date = new Date();
+        const hours = 24; // set the expiration time to 24 hours
+        const settingTime = date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+        Cookies.set('isLoggedIn', 'true', { expires: new Date(settingTime)});
+        Cookies.set('email', `${userEmail}`, { expires: new Date(settingTime)});
 
         setTimeout(() => {
           window.location.href = "/"
-
         }, 5000);
-
-
       } else {
         toast.error('Login unsuccessful');
-        // setTimeout(() => {
-        //   window.location.reload();
-        // }, 3000);
       }
     } catch (error) {
       console.error(error);
       toast.error('Login failed');
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 3000);
     }
   }
 };
