@@ -80,7 +80,7 @@ export default function Cale()  {
                 console.log(carTimePickup)
                 console.log(carTimeReturn)
 
-                if(!carExists){
+                if(carExists){
 
                     toast.error("Car booked error");
                     toast.error("You can only book one car at a time!");

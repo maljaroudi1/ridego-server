@@ -1,11 +1,11 @@
 const cors = require("cors");
 const express = require('express');
-const bodyParser = require('express').json(); // Corrected bodyParser usage
+const bodyParser = require('express').json();
 const bcrypt = require("bcrypt");
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const axios = require('axios');
+
 const compression = require('compression');
 
 const app = express();
@@ -18,7 +18,6 @@ const payload = {
 
 
 const theSecretKey = process.env.SECRET_KEY;
-const mongoURI = process.env.MONGODB_URI;
 
 
 
@@ -74,7 +73,6 @@ UserSchema.pre('save', async function (next) {
 //Login and check if user is already created
 app.post('/customerinfo/customer-infos', async (req, res) => {
   const { email, password } = req.body;
-
   try {
     // Find the user by email
     const user = await User.findOne({ email });
@@ -92,27 +90,12 @@ app.post('/customerinfo/customer-infos', async (req, res) => {
         res.json({ token });
 
     }
-
-
-
-
-
-
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred.' });
   }
 });
 
-app.post('/customerinfo/customer-infos', async (req, res) => {
-  try {
-    const newUser = await User.create(req.body);
-    res.status(201).json(newUser);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Error creating user.' });
-  }
-});
 
 
 //Get request to check and validate if user email is exact match in database
@@ -153,3 +136,12 @@ app.get('/customerinfo/customer-infos', async (req, res) => {
   }
 });
 //Post request to create a user
+app.post('/customerinfo/customer-info', async (req, res) => {
+  try {
+    const newUser = await User.create(req.body);
+    res.status(201).json(newUser);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error creating user.' });
+  }
+});
