@@ -18,6 +18,7 @@ const payload = {
 
 
 const theSecretKey = process.env.SECRET_KEY;
+const mongoURI = process.env.MONGODB_URI;
 
 
 

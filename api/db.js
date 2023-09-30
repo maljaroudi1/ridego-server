@@ -4,7 +4,13 @@ const bodyParser = require('express').json;
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const booking = require('./booking');
+const googlelogin = require('./googlelogin');
+const loginregister= require('./loginregister');
 const compression = require('compression');
+
+
+
 app.use(compression());
 app.use(bodyParser());
 app.use(cors({
@@ -13,8 +19,6 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
 }));
 const mongoURI = process.env.MONGODB_URI;
-
-
 async function startApp() {
     try {
       await mongoose.connect(mongoURI, {
@@ -30,4 +34,6 @@ async function startApp() {
   //Initilize function to connect to database
   startApp();
   
-  
+app.use(booking);
+app.use(googlelogin);
+app.use(loginregister);
