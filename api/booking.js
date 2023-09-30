@@ -8,6 +8,11 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const axios = require('axios')
 const compression = require('compression');
+const express = require('express');
+
+
+
+app.use(express.json());
 app.use(compression());
 
 
@@ -69,31 +74,17 @@ const UserCar = mongoose.model('customer-car', UserSchemaCar);//Get request to c
 
 
 
-// //   const { uniqueID, uniqueURLToken } = req.query;
-
-// //   try {
-
-// //     if(){
-// //       res.json({test: true});
-// //     } else {
-// //       res.json({ test: false });
-// //     }
-// //   } catch (error) {
-// //     console.error(error);
-// //     res.status(500).json({error: 'An error occurred Unique ID not found' })
-// //   }
-// // });
 
 // //Post to save customer car booking information
-// app.post('/customerinfo/customer-cars', async (req, res) => {
-//   try{
-//     const newUserCar = await UserCar.create(req.body);
-//     res.status(201).json(newUserCar)
-//   }catch (err){
-//     console.error(err);
-//     res.status(500).json({ message: 'Error saving booking information.' });
-//   }
-// });
+app.post('/customerinfo/customer-cars', async (req, res) => {
+  try{
+    const newUserCar = await UserCar.create(req.body);
+    res.status(201).json(newUserCar)
+  }catch (err){
+    console.error(err);
+    res.status(500).json({ message: 'Error saving booking information.' });
+  }
+});
 
 
 app.post('/customerinfo/customer-cars', async (req, res) => {

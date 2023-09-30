@@ -1,6 +1,5 @@
 const cors = require("cors");
 const express = require('express');
-const bodyParser = require('express').json();
 const bcrypt = require("bcrypt");
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
@@ -10,7 +9,8 @@ const compression = require('compression');
 
 const app = express();
 app.use(compression());
-app.use(bodyParser);
+app.use(express.json());
+
 
 const payload = {
     userId: 1
@@ -23,12 +23,7 @@ const theSecretKey = process.env.SECRET_KEY;
 
 const token = jwt.sign(payload, theSecretKey, { expiresIn: '1h' });
 
-// Always declare cors above all get and post requests
-app.use(cors({
-  origin: 'https://car-rental-rentgo.vercel.app',
-  allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
-}));
+
 
 // UserScheme for customer-info
 const UserSchema = new mongoose.Schema({
