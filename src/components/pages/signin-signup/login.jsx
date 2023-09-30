@@ -50,7 +50,7 @@ const handleLogin = async (e) => {
     toast.error('Invalid Email!');
   } else {
     try {
-      const response = await axios.post('https://car-rental-rentgo.vercel.app/customerinfo/customer-infos/login', {
+      const response = await axios.post('https://car-rental-rentgo.vercel.app/login', {
         email,
         password,
       });

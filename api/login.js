@@ -69,7 +69,7 @@ app.get('/customerinfo/customer-infos', async (req, res) => {
 });
 
 // Login and generate an authentication token
-app.post('/customerinfo/customer-infos/login', async (req, res) => {
+app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
