@@ -11,7 +11,7 @@ const app = express();
 app.use(cors({
   origin: 'https://car-rental-rentgo.vercel.app',
   allowedHeaders: "*", // Specify the allowed headers as an array
-  methods: '*', // Specify the allowed methods as an array
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
 }));
 app.use(compression());
 app.use(express.json());

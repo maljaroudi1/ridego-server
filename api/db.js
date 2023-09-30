@@ -14,7 +14,7 @@ const express = require('express');
 app.use(cors({
   origin: 'https://car-rental-rentgo.vercel.app',
   allowedHeaders: "*", // Specify the allowed headers as an array
-  methods: '*', // Specify the allowed methods as an array
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
 }));
 app.use(compression());
 app.use(express.json());
@@ -31,7 +31,7 @@ async function startApp()  {
         useUnifiedTopology: true,
         family: 4
       });
-      r
+
       console.log('db running');
     } catch (error) {
       console.error('db connection error:', error);
@@ -39,4 +39,6 @@ async function startApp()  {
 }
   //Initilize function to connect to database
 startApp();
-
+app.use(loginregister)
+app.use(booking)
+app.use(googlelogin)
