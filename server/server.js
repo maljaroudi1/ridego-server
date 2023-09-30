@@ -20,9 +20,6 @@ const payload = {
   userId: 1
 };
 
-const apiKeyGoogle = process.env.GOOGLE_MAPS_APIKEY;
-const expectedApiKey = apiKeyGoogle; // Replace with your actual API key
-
 
 const theSecretKey = process.env.SECRET_KEY;
 const mongoURI = process.env.MONGODB_URI;
@@ -335,7 +332,7 @@ app.post('/customerinfo/customer-info', async (req, res) => {
 
 //Listinng on the port 5000 for post and get request for database
 
-app.listen(port, () => {
-    console.log(`Server Running on port ${port}`);
+// app.listen(port, () => {
+//     console.log(`Server Running on port ${port}`);
    
-});
+// });
