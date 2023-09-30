@@ -8,6 +8,11 @@ require('dotenv').config();
 const compression = require('compression');
 
 const app = express();
+app.use(cors({
+  origin: '*',
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
+  methods: '*', // Specify the allowed methods as an array
+}));
 app.use(compression());
 app.use(express.json());
 

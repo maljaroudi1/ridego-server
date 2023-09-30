@@ -9,9 +9,9 @@ const compression = require('compression');
 app.use(compression());
 app.use(bodyParser());
 app.use(cors({
-    origin: 'https://car-rental-rentgo.vercel.app',
-    allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
+  origin: '*',
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
+  methods: '*', // Specify the allowed methods as an array
 }));
 
 const UserSchemaGoogle = new mongoose.Schema({
