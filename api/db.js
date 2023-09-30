@@ -24,10 +24,10 @@ app.use(express.json());
 //     allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
 //     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
 // }));
-const mongoURI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI;
 async function startApp() {
     try {
-      await mongoose.connect(mongoURI, {
+      await mongoose.connect(MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         family: 4
