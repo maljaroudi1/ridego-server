@@ -74,7 +74,7 @@ export default function Booking()  {
            }
 
           try{
-               const response = await axios.post('http://localhost:5000/customerinfo/customer-cars', {
+               const response = await axios.post('https://car-rental-rentgo.vercel.app/customerinfo/customer-cars', {
                    fullName,
                    email,
                    phone,

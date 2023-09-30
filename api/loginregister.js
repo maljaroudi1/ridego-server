@@ -69,7 +69,7 @@ UserSchema.pre('save', async function (next) {
 const token = jwt.sign(payload, theSecretKey, { expiresIn: '1h' });
   
 //Post request to create a user
-app.post('/customerinfo/customer-info', async (req, res) => {
+app.post('/customerinfo/customer-infos', async (req, res) => {
     try {
       const newUser = await User.create(req.body);
       res.status(201).json(newUser);
