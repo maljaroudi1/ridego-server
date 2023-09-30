@@ -10,22 +10,24 @@ const login = require('./login');
 const register = require('./register')
 const compression = require('compression');
 const express = require('express');
-app.use(express.json());
 
 // Always declare cors above all get and post requests
 app.use(cors({
-    origin: 'https://car-rental-rentgo.vercel.app',
-    allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
+  origin: 'https://car-rental-rentgo.vercel.app',
+  allowedHeaders: "*", // Specify the allowed headers as an array
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
 }));
 app.use(compression());
 app.use(express.json());
-
-
+// app.use(cors({
+//     origin: 'https://car-rental-rentgo.vercel.app',
+//     allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
+// }));
+const MONGODB_URI = process.env.MONGODB_URI;
 async function startApp()  {
     try {
-      await
-      mongoose.connect(process.env.MONGODB_URI, {
+      await mongoose.connect(MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         family: 4
@@ -37,8 +39,11 @@ async function startApp()  {
     }
 }
   //Initilize function to connect to database
-startApp(app.use(login)
+startApp();
+app.use(login)
 app.use(register)
 app.use(booking)
 app.use(googlelogin)
-);
+
+
+modules.exports = app;

@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const axios = require('axios')
+
 const compression = require('compression');
 const express = require('express');
 
@@ -100,4 +100,5 @@ app.post('/customerinfo/customer-cars', async (req, res) => {
       res.status(500).json({ message: 'Error saving booking information.' });
     }
   });
-  
+
+modules.exports = app;

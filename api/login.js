@@ -1,98 +1,119 @@
-const { json, send } = require('micro');
-const cors = require('micro-cors')();
+const cors = require("cors");
+const express = require('express');
+const bcrypt = require("bcrypt");
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const compression = require('micro-compression');
 require('dotenv').config();
+
+const compression = require('compression');
+
+const app = express();
+app.use(cors({
+  origin: 'https://car-rental-rentgo.vercel.app',
+  allowedHeaders: "*", // Specify the allowed headers as an array
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
+}));
+app.use(compression());
+app.use(express.json());
+
+
+const payload = {
+    userId: 1
+};
+
 
 const theSecretKey = process.env.SECRET_KEY;
 
-// User Schema for customer-info
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  phone: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
+
+
+const token = jwt.sign(payload, theSecretKey, { expiresIn: '1h' });
+
+
+
+// UserScheme for customer-info
+const UserSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    phone: {
+        type: String,
+        required: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
 });
 
-const User = mongoose.model('customer-infos', userSchema);
+const User = mongoose.model('customer-infos', UserSchema);
 
 // Hashing Password
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
+UserSchema.pre('save', async function (next) {
+    const user = this;
 
+    if (!user.isModified('password')) return next();
+
+    try {
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(user.password, salt);
+        user.password = hash;
+        next();
+    } catch (error) {
+        return next(error);
+    }
+});
+
+//Get request to check and validate if user email is exact match in database
+app.get('/customerinfo/customer-info', async (req, res) => {
+  const { email} = req.query;
   try {
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(this.password, salt);
-    this.password = hash;
-    next();
+    const existingEmail = await User.findOne({ email });
+    if (existingEmail ) {
+      res.json({ exists: true});
+
+    } else {
+      res.json({ exists: false });
+    }
   } catch (error) {
-    return next(error);
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred.' });
   }
 });
 
-// Check if a user with the given email exists
-const checkEmailExists = async (req) => {
-  const { email } = req.query;
+//Login and check if user is already created
+app.post('/customerinfo/customer-infos', async (req, res) => {
+  const { email, password } = req.body;
   try {
-    const existingEmail = await User.findOne({ email });
-    return { exists: !!existingEmail };
-  } catch (error) {
-    console.error(error);
-    throw new Error('An error occurred.');
-  }
-};
-
-// Login and generate an authentication token
-const loginUser = async (req) => {
-  const { email, password } = await json(req);
-  try {
+    // Find the user by email
     const user = await User.findOne({ email });
     if (!user) {
-      throw new Error('Invalid email or password.');
+      return res.status(401)
+      .json({ error: 'Invalid email or password.' });
     }
-
+    // Compare the hashed incoming password to the stored hash
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
-      throw new Error('Invalid email or password.');
+      return res.status(401)
+      .json({ error: 'Invalid email or password.' });
+    } else {
+       // Generate and send an authentication token if needed
+        res.json({ token });
+
     }
-
-    const payload = { userId: user._id }; // You can customize the payload as needed
-    const token = jwt.sign(payload, theSecretKey, { expiresIn: '1h' });
-
-    return { token };
   } catch (error) {
     console.error(error);
-    throw new Error('An error occurred.');
+    res.status(500).json({ error: 'An error occurred.' });
   }
-};
+});
 
-module.exports = cors(compression(async (req, res) => {
-  if (req.method === 'GET') {
-    const result = await checkEmailExists(req);
-    send(res, 200, result);
-  } else if (req.method === 'POST') {
-    try {
-      const result = await loginUser(req);
-      send(res, 200, result);
-    } catch (error) {
-      send(res, 401, { error: error.message });
-    }
-  } else {
-    send(res, 405, 'Method Not Allowed');
-  }
-}));
+
+
+
+modules.exports = app;
+
