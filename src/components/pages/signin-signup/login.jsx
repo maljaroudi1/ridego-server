@@ -50,24 +50,18 @@ const handleLogin = async (e) => {
     toast.error('Invalid Email!');
   } else {
     try {
-      const response = await axios.post('https://car-rental-rentgo.vercel.app/customerinfo/customer-infos', {
+      const response = await axios.post('https://car-rental-rentgo.vercel.app/customerinfo/customer-infos/login', {
         email,
         password,
       });
-
       if (response.data.token) {
         toast.success('Login successful');
         setNotActive('active-progress');
 
 
 
-          const response2 = await axios.get(`https://car-rental-rentgo.vercel.app/customerinfo/customer-infos?name=${name}&email=${email}`, {
-            name,
-            email
-          });
 
-
-          const userEmail = response2.config.email;
+          const userEmail = response.config.email;
 
           const date = new Date();
           const hours = 24; // set the expiration time too 24 hours
