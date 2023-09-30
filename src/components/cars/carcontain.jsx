@@ -5,14 +5,9 @@ import Cookies from 'js-cookie'
 
 //logo
 
-import carIMG from '../../assets/cars/toyota/g86.png'
-import carIMG2 from '../../assets/cars/toyota/5HERO.png'
-import formStyling from '../../assets/arrow.png'
-import formStyling2 from '../../assets/wave.png'
-
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCircleArrowLeft, faPerson, faGaugeHigh, faUpDown} from '@fortawesome/free-solid-svg-icons'
+import { faPerson, faGaugeHigh, faUpDown} from '@fortawesome/free-solid-svg-icons'
 import { motion} from 'framer-motion'
 import { useState, useRef } from 'react';
 
@@ -31,10 +26,10 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 //core
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/primereact.min.css";
-import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
+import {  PrimeReactContext } from 'primereact/api';
 
 
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -53,108 +48,108 @@ import {faGauge, faGear, faFillDrip, faCar} from '@fortawesome/free-solid-svg-ic
 export default function  carContainer()   {
 
 
-               //creat car
-               const [fullName, setNewCarFullName] = useState("");
-               const [phone, setNewCarPhone] = useState("");
-               const [email, setNewCarEmail] = useState("");
-               const [carName, setCarName] = useState("");
-               const [carType, setCarType] = useState('');
-               const [carYear, setCarYear] = useState('');
-               const [carID, setTheCarID] = useState("");
-               const [locationCar, setLocationCar] = useState("");
-               const [carPickUp, setNewCarPickUp] = useState(new Date());
-               const [carReturn, setNewCarReturn] = useState(new Date());
-               const [availableCars, setAvailableCars] = useState([]);
+            //    //creat car
+            //    const [fullName, setNewCarFullName] = useState("");
+            //    const [phone, setNewCarPhone] = useState("");
+            //    const [email, setNewCarEmail] = useState("");
+            //    const [carName, setCarName] = useState("");
+            //    const [carType, setCarType] = useState('');
+            //    const [carYear, setCarYear] = useState('');
+            //    const [carID, setTheCarID] = useState("");
+            //    const [locationCar, setLocationCar] = useState("");
+            //    const [carPickUp, setNewCarPickUp] = useState(new Date());
+            //    const [carReturn, setNewCarReturn] = useState(new Date());
+            //    const [availableCars, setAvailableCars] = useState([]);
 
-               const emailRegex = /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/;
-               const nameRegex = /^[A-Za-z\s\-']+$/;
-               const onSubmitCreateCar = async () => {
-                   if (
-                       fullName.trim() === '' ||
-                       phone.trim() === '' ||
-                       email.trim() === '' ||
-                       carPickUp === '' ||
-                       carReturn === ''
-                   )
-                   {
-                       toast.error('Please fill out all required fields.');
-                   }
-                    if(!emailRegex.test(email)){
-                        toast.error('Please enter a valid email!.');
-                    }
+            //    const emailRegex = /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/;
+            //    const nameRegex = /^[A-Za-z\s\-']+$/;
+            //    const onSubmitCreateCar = async () => {
+            //        if (
+            //            fullName.trim() === '' ||
+            //            phone.trim() === '' ||
+            //            email.trim() === '' ||
+            //            carPickUp === '' ||
+            //            carReturn === ''
+            //        )
+            //        {
+            //            toast.error('Please fill out all required fields.');
+            //        }
+            //         if(!emailRegex.test(email)){
+            //             toast.error('Please enter a valid email!.');
+            //         }
 
-                    if(!nameRegex.test(fullName)){
-                        toast.error('Please enter a valid name!.');
-                        return;
-                    }
+            //         if(!nameRegex.test(fullName)){
+            //             toast.error('Please enter a valid name!.');
+            //             return;
+            //         }
 
-                   try{
-                        const response = await axios.post('http://localhost:5000/customerinfo/customer-cars', {
-                            fullName,
-                            email,
-                            phone,
-                            carName,
-                            carYear,
-                            carType,
-                            carID,
-                            locationCar,
-                            carPickUp,
-                            carReturn,
+            //        try{
+            //             const response = await axios.post('http://localhost:5000/customerinfo/customer-cars', {
+            //                 fullName,
+            //                 email,
+            //                 phone,
+            //                 carName,
+            //                 carYear,
+            //                 carType,
+            //                 carID,
+            //                 locationCar,
+            //                 carPickUp,
+            //                 carReturn,
 
-                        })
-                        const theCarID = response.data.carID;
-                        const theLocation = response.data.locationCar;
-                        const thePickUpDate = response.data.carPickUp;
-                        const theReturnDate = (response.data.carReturn);
-                        const TheReturnDateCookie = new Date(response.data.carReturn);
-
-
-                        const TheReturnCookie = Math.floor(TheReturnDateCookie.getTime() / 1000); // Convert milliseconds to seconds
-                        console.log(theReturnDate)
-                        console.log(TheReturnCookie)
-
-                        Cookies.set('CarID', JSON.stringify(theCarID), { expires: theReturnDate });
-                        Cookies.set('Location', JSON.stringify(theLocation), { expires: theReturnDate });
-                        Cookies.set('PickupDate', JSON.stringify(thePickUpDate), { expires: theReturnDate });
-                        Cookies.set('ReturnDate', JSON.stringify(theReturnDate), { expires: theReturnDate });
-
-                         // EmailJS implementation would be around here, where the customer would receive an email on form submisson,
-                         // would return customer pickupdate/returndate using backend and all booking information
-                        toast.success('Car Booked, check your email!');
-                        // setTimeout(() => {
-                        //     window.location.href = '/booking/successful';
-                        //   }, 5000);
+            //             })
+            //             const theCarID = response.data.carID;
+            //             const theLocation = response.data.locationCar;
+            //             const thePickUpDate = response.data.carPickUp;
+            //             const theReturnDate = (response.data.carReturn);
+            //             const TheReturnDateCookie = new Date(response.data.carReturn);
 
 
-                   }
-                   catch(err){
-                        console.log(err)
-                        toast.error(`error:${err}`);
-                   }
+            //             const TheReturnCookie = Math.floor(TheReturnDateCookie.getTime() / 1000); // Convert milliseconds to seconds
+            //             console.log(theReturnDate)
+            //             console.log(TheReturnCookie)
+
+            //             Cookies.set('CarID', JSON.stringify(theCarID), { expires: theReturnDate });
+            //             Cookies.set('Location', JSON.stringify(theLocation), { expires: theReturnDate });
+            //             Cookies.set('PickupDate', JSON.stringify(thePickUpDate), { expires: theReturnDate });
+            //             Cookies.set('ReturnDate', JSON.stringify(theReturnDate), { expires: theReturnDate });
+
+            //              // EmailJS implementation would be around here, where the customer would receive an email on form submisson,
+            //              // would return customer pickupdate/returndate using backend and all booking information
+            //             toast.success('Car Booked, check your email!');
+            //             // setTimeout(() => {
+            //             //     window.location.href = '/booking/successful';
+            //             //   }, 5000);
 
 
-
-
-                }
+            //        }
+            //        catch(err){
+            //             console.log(err)
+            //             toast.error(`error:${err}`);
+            //        }
 
 
 
-                 //Close Form
 
-                       const [toggleForm] = useState(1);
-                       const carFormRef = useRef(null);
-                       const backgroundRef = useRef(null);
+            //     }
 
-                       function handleCloseForm(){
-                           carFormRef.current.classList.toggle('car-form-active');
-                           backgroundRef.current.classList.toggle('background-active');
-                           document.body.style.overflowY = 'hidden';
-                       }
-                       function closeForm() {
-                        carFormRef.current.classList.toggle('car-form-active');
-                        backgroundRef.current.classList.toggle('background-active');
-                        document.body.style.overflowY = 'auto';
-                       }
+
+
+            //      //Close Form
+
+            //            const [toggleForm] = useState(1);
+            //            const carFormRef = useRef(null);
+            //            const backgroundRef = useRef(null);
+
+            //            function handleCloseForm(){
+            //                carFormRef.current.classList.toggle('car-form-active');
+            //                backgroundRef.current.classList.toggle('background-active');
+            //                document.body.style.overflowY = 'hidden';
+            //            }
+            //            function closeForm() {
+            //             carFormRef.current.classList.toggle('car-form-active');
+            //             backgroundRef.current.classList.toggle('background-active');
+            //             document.body.style.overflowY = 'auto';
+            //            }
 
 
 
