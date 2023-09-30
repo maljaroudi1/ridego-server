@@ -10,7 +10,7 @@ const compression = require('compression');
 const app = express();
 app.use(cors({
   origin: 'https://car-rental-rentgo.vercel.app',
-  allowedHeaders: "*", // Specify the allowed headers as an array
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
 }));
 app.use(compression());
@@ -69,9 +69,25 @@ UserSchema.pre('save', async function (next) {
     }
 });
 
-// Post request to create a user (Registration)
+//Get request to check and validate if user email is exact match in database
+app.get('/customerinfo/customer-infos', async (req, res) => {
+  const { email} = req.query;
+  try {
+    const existingEmail = await User.findOne({ email });
+    if (existingEmail ) {
+      res.json({ exists: true});
+
+    } else {
+      res.json({ exists: false });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred.' });
+  }
+});
+
 //Login and check if user is already created
-app.post('/customer-infos', async (req, res) => {
+app.post('/customerinfo/customer-infos', async (req, res) => {
   const { email, password } = req.body;
   try {
     // Find the user by email
@@ -98,50 +114,5 @@ app.post('/customer-infos', async (req, res) => {
 
 
 
-//Get request to check and validate if user email is exact match in database
-app.get('/customerinfo/customer-info', async (req, res) => {
-  const { email} = req.query;
-  try {
-    const existingEmail = await User.findOne({ email });
-    if (existingEmail ) {
-      res.json({ exists: true});
-
-    } else {
-      res.json({ exists: false });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred.' });
-  }
-});
 
 
-app.get('/customerinfo/customer-infos', async (req, res) => {
-  const { name, email } = req.query;
-  try {
-    const existingUsers = await User.find({ name, email });
-
-    if (existingUsers.length > 0) {
-      // At least one user with matching name and email found
-      // Assuming you want to return the name of the first matching user
-      const user = existingUsers[0];
-      res.json({ existingUser: true, name: user.name });
-    } else {
-      // User not found
-      res.json({ existingUser: false });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred.' });
-  }
-});
-//Post request to create a user
-// app.post('/customerinfo/customer-info', async (req, res) => {
-//   try {
-//     const newUser = await User.create(req.body);
-//     res.status(201).json(newUser);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ message: 'Error creating user.' });
-//   }
-// });

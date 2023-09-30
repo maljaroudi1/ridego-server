@@ -6,15 +6,16 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const booking = require('./booking');
 const googlelogin = require('./googlelogin');
-const loginregister= require('./loginregister');
+const login = require('./login');
+const register = require('./register')
 const compression = require('compression');
 const express = require('express');
 
 // Always declare cors above all get and post requests
 app.use(cors({
-  origin: 'https://car-rental-rentgo.vercel.app',
-  allowedHeaders: "*", // Specify the allowed headers as an array
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
+    origin: 'https://car-rental-rentgo.vercel.app',
+    allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
 }));
 app.use(compression());
 app.use(express.json());
@@ -39,6 +40,7 @@ async function startApp()  {
 }
   //Initilize function to connect to database
 startApp();
-app.use(loginregister)
+app.use(login)
+app.use(register)
 app.use(booking)
 app.use(googlelogin)

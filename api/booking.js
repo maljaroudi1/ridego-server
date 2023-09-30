@@ -12,9 +12,9 @@ const express = require('express');
 
 
 app.use(cors({
-  origin: '*',
+  origin: 'https://car-rental-rentgo.vercel.app',
   allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
-  methods: '*', // Specify the allowed methods as an array
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
 }));
 app.use(express.json());
 app.use(compression());
