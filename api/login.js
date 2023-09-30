@@ -8,11 +8,7 @@ require('dotenv').config();
 const compression = require('compression');
 
 const app = express();
-app.use(cors({
-  origin: 'https://car-rental-rentgo.vercel.app',
-  allowedHeaders: "*", // Specify the allowed headers as an array
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
-}));
+
 app.use(compression());
 app.use(express.json());
 
@@ -69,6 +65,12 @@ UserSchema.pre('save', async function (next) {
     }
 });
 
+app.use(cors({
+  origin: 'https://car-rental-rentgo.vercel.app',
+  allowedHeaders: 'Content-Type,Authorization',
+  methods: ['POST', 'GET', 'PUT', 'DELETE'], // Specify the allowed methods as an array
+}));
+
 //Get request to check and validate if user email is exact match in database
 app.get('/customerinfo/customer-info', async (req, res) => {
   const { email} = req.query;
@@ -87,7 +89,7 @@ app.get('/customerinfo/customer-info', async (req, res) => {
 });
 
 //Login and check if user is already created
-app.get('/customerinfo/customer-infos', async (req, res) => {
+app.post('/customerinfo/customer-infos', async (req, res) => {
   const { email, password } = req.body;
   try {
     // Find the user by email

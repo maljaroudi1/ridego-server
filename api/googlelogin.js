@@ -5,11 +5,7 @@ const bodyParser = require('express').json;
 const mongoose = require('mongoose');
 require('dotenv').config();
 const compression = require('compression');
-app.use(cors({
-  origin: 'https://car-rental-rentgo.vercel.app',
-  allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
-}));
+
 app.use(compression());
 app.use(bodyParser());
 
@@ -30,6 +26,13 @@ const UserSchemaGoogle = new mongoose.Schema({
 
 const UserGoogle = mongoose.model('google-users-info', UserSchemaGoogle);
 
+app.use(cors({
+  origin: 'https://car-rental-rentgo.vercel.app',
+  allowedHeaders: 'Content-Type,Authorization',
+  methods: ['POST', 'GET', 'PUT', 'DELETE'], // Specify the allowed methods as an array
+}));
+
+//Get request
   //post google login info
 app.post("/google-users-info", async (req, res) => {
     try {

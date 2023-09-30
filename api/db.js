@@ -11,11 +11,7 @@ const compression = require('compression');
 const app = express(); // Initialize express app
 
 // Always declare cors above all get and post requests
-app.use(cors({
-  origin: 'https://car-rental-rentgo.vercel.app',
-  allowedHeaders: "*", // Specify the allowed headers as an array
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
-}));
+
 app.use(compression());
 app.use(express.json());
 
@@ -37,7 +33,11 @@ async function startApp()  {
 
 // Initialize function to connect to the database
 startApp();
-
+app.use(cors({
+  origin: 'https://car-rental-rentgo.vercel.app',
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
+}));
 // Attach your routes using app.use
 app.use(login);
 

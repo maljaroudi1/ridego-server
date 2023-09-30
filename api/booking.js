@@ -11,11 +11,7 @@ const compression = require('compression');
 const express = require('express');
 
 
-app.use(cors({
-  origin: 'https://car-rental-rentgo.vercel.app',
-  allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
-}));
+
 app.use(express.json());
 app.use(compression());
 
@@ -76,7 +72,13 @@ const UserSchemaCar = new mongoose.Schema({
 const UserCar = mongoose.model('customer-car', UserSchemaCar);//Get request to check and validate if carID is in database and post data must mmatch axios post on front end "/customer-cars"
 
 
+app.use(cors({
+  origin: 'https://car-rental-rentgo.vercel.app',
+  allowedHeaders: 'Content-Type,Authorization',
+  methods: ['POST', 'GET', 'PUT', 'DELETE'], // Specify the allowed methods as an array
+}));
 
+//Get request
 
 
 // //Post to save customer car booking information
