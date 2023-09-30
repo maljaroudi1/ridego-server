@@ -12,11 +12,10 @@ const express = require('express');
 
 // Always declare cors above all get and post requests
 app.use(cors({
-  origin: '*',
-  allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers as an array
+  origin: 'https://car-rental-rentgo.vercel.app',
+  allowedHeaders: "*", // Specify the allowed headers as an array
   methods: '*', // Specify the allowed methods as an array
 }));
-
 app.use(compression());
 app.use(express.json());
 // app.use(cors({

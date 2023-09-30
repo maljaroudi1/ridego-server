@@ -9,7 +9,7 @@ const compression = require('compression');
 
 const app = express();
 app.use(cors({
-  origin: 'https://car-rental-rentgo.vercel.app/',
+  origin: 'https://car-rental-rentgo.vercel.app',
   allowedHeaders: "*", // Specify the allowed headers as an array
   methods: '*', // Specify the allowed methods as an array
 }));
