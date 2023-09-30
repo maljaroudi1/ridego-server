@@ -1,7 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/cars.html", "destination": "/cars.html" },
-    { "source": "/cars", "destination": "/cars.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}
