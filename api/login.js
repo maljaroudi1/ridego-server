@@ -115,7 +115,7 @@ app.get('/customerinfo/customer-infos', async (req, res) => {
 // register stuff
 
 // Post request to create a user
-app.post('/customerinfo/customer-info', async (req, res) => {
+app.get('/customerinfo/customer-info', async (req, res) => {
   try {
     const newUser = await User.create(req.body);
     res.status(201).json(newUser);
