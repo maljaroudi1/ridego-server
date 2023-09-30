@@ -87,7 +87,7 @@ app.get('/customerinfo/customer-info', async (req, res) => {
 });
 
 //Login and check if user is already created
-app.get('/customerinfo/customer-infos', async (req, res) => {
+app.post('/customerinfo/customer-infos', async (req, res) => {
   const { email, password } = req.body;
   try {
     // Find the user by email
@@ -115,7 +115,7 @@ app.get('/customerinfo/customer-infos', async (req, res) => {
 // register stuff
 
 // Post request to create a user
-app.get('/customerinfo/customer-info', async (req, res) => {
+app.post('/customerinfo/customer-info', async (req, res) => {
   try {
     const newUser = await User.create(req.body);
     res.status(201).json(newUser);
