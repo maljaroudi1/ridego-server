@@ -34,21 +34,6 @@ export default function Login() {
 
 
 
-// const checkLoginStatus = async () => {
-
-//   try{
-//     const response =  await axios.get(`http://localhost:5000/users/customer-info?uniqueID=${uniqueID}`, {
-
-//     });
-
-
-//   }catch(err){
-//     console.log(err)
-//     console.log('uniqueID:', uniqueID);
-//   }
-
-
-// }
 
 
 
@@ -65,7 +50,7 @@ const handleLogin = async (e) => {
     toast.error('Invalid Email!');
   } else {
     try {
-      const response = await axios.post('https://car-rental-rentgo.vercel.app/customerinfo/customer-infos', {
+      const response = await axios.post('http://localhost:5000/customerinfo/customer-infos', {
         email,
         password,
       });
@@ -76,7 +61,7 @@ const handleLogin = async (e) => {
 
 
 
-          const response2 = await axios.get(`https://car-rental-rentgo.vercel.app/customerinfo/customer-infos?name=${name}&email=${email}`, {
+          const response2 = await axios.get(`http://localhost:5000/customerinfo/customer-infos?name=${name}&email=${email}`, {
             name,
             email
           });

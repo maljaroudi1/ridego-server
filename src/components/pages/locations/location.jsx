@@ -22,7 +22,7 @@ export default function Locations() {
 
   const GoogleAPiKey = import.meta.env.VITE_GOOGLE;
 
-  console.log((GoogleAPiKey))
+
 
 
 
