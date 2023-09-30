@@ -104,6 +104,15 @@ app.post('/customerinfo/customer-infos', async (req, res) => {
   }
 });
 
+app.post('/customerinfo/customer-infos', async (req, res) => {
+  try {
+    const newUser = await User.create(req.body);
+    res.status(201).json(newUser);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error creating user.' });
+  }
+});
 
 
 //Get request to check and validate if user email is exact match in database
@@ -144,12 +153,3 @@ app.get('/customerinfo/customer-infos', async (req, res) => {
   }
 });
 //Post request to create a user
-app.post('/customerinfo/customer-info', async (req, res) => {
-  try {
-    const newUser = await User.create(req.body);
-    res.status(201).json(newUser);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Error creating user.' });
-  }
-});
