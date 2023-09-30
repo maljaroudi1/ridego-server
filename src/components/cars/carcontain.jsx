@@ -4,12 +4,12 @@ import Cars from './car'
 import Cookies from 'js-cookie'
 
 //logo
-import logo from '../../assets/logo/logo.png'
+
 import carIMG from '../../assets/cars/toyota/g86.png'
 import carIMG2 from '../../assets/cars/toyota/5HERO.png'
 import formStyling from '../../assets/arrow.png'
 import formStyling2 from '../../assets/wave.png'
-import bwm from  '../../assets/cars/bmw/bmw3SeriesSedan.png'
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCircleArrowLeft, faPerson, faGaugeHigh, faUpDown} from '@fortawesome/free-solid-svg-icons'
@@ -410,7 +410,7 @@ export default function  carContainer()   {
 
                     </div>
 
-                    <div className="form-container">
+                    {/* <div className="form-container">
 
                         <div className={`create-car-form ${toggleForm}`} ref={carFormRef} id='carform'>
 
@@ -510,7 +510,7 @@ export default function  carContainer()   {
 
                     <div className={`background-overlay ${toggleForm}`} ref={backgroundRef}>
 
-                    </div>
+                    </div> */}
 
         </div>
     );
