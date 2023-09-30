@@ -71,7 +71,7 @@ UserSchema.pre('save', async function (next) {
 
 // Post request to create a user (Registration)
 //Login and check if user is already created
-app.post('/customerinfo/customer-infos', async (req, res) => {
+app.post('/customer-infos', async (req, res) => {
   const { email, password } = req.body;
   try {
     // Find the user by email
