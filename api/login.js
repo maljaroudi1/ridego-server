@@ -116,37 +116,37 @@ app.post('/customerinfo/customer-infos', async (req, res) => {
 
 // register stuff
 
-// Post request to create a user
-app.post('/customerinfo/customer-info', async (req, res) => {
-  try {
-    const newUser = await User.create(req.body);
-    res.status(201).json(newUser);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Error creating user.' });
-  }
-});
+// // Post request to create a user
+// app.post('/customerinfo/customer-info', async (req, res) => {
+//   try {
+//     const newUser = await User.create(req.body);
+//     res.status(201).json(newUser);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: 'Error creating user.' });
+//   }
+// });
 
-//Check if name and email are in DB
-app.get('/customerinfo/customer-info', async (req, res) => {
-    const { name, email } = req.query;
-    try {
-      const existingUsers = await User.find({ name, email });
+// //Check if name and email are in DB
+// app.get('/customerinfo/customer-info', async (req, res) => {
+//     const { name, email } = req.query;
+//     try {
+//       const existingUsers = await User.find({ name, email });
 
-      if (existingUsers.length > 0) {
-        // At least one user with matching name and email found
-        // Assuming you want to return the name of the first matching user
-        const user = existingUsers[0];
-        res.json({ existingUser: true, name: user.name });
-      } else {
-        // User not found
-        res.json({ existingUser: false });
-      }
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'An error occurred.' });
-    }
-});
+//       if (existingUsers.length > 0) {
+//         // At least one user with matching name and email found
+//         // Assuming you want to return the name of the first matching user
+//         const user = existingUsers[0];
+//         res.json({ existingUser: true, name: user.name });
+//       } else {
+//         // User not found
+//         res.json({ existingUser: false });
+//       }
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).json({ error: 'An error occurred.' });
+//     }
+// });
 
 module.exports = app;
 
