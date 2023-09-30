@@ -210,7 +210,7 @@ const GoogleAPiKey2 = import.meta.env.VITE_CLIENTID;
             <div className="mb-5">
               <div className="text-900 text-3xl font-medium mb-3">Welcome Back</div>
               <span className="text-600 font-medium mr-2">Do not have an account?</span>
-              <a className="font-medium no-underline text-blue-500 cursor-pointer" href='/register'>Create today!</a>
+              <a className="font-medium no-underline text-blue-500 cursor-pointer" href='/auth/register'>Create today!</a>
             </div>
             <div>
             <ToastContainer/>
