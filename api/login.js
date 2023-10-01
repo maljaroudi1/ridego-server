@@ -25,11 +25,7 @@ const theSecretKey = process.env.SECRET_KEY;
 const token = jwt.sign(payload, theSecretKey, { expiresIn: '1h' });
 
 
-app.use(cors({
-  origin: 'https://car-rental-rentgo.vercel.app',
-  allowedHeaders: ['*, Access-Control-Allow-Methods'] , // Specify the allowed headers as an array
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
-}));
+
 // UserScheme for customer-info
 const UserSchema = new mongoose.Schema({
     name: {

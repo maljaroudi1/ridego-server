@@ -35,7 +35,7 @@ async function startApp()  {
 startApp();
 app.use(cors({
   origin: 'https://car-rental-rentgo.vercel.app',
-  allowedHeaders: ['*, Access-Control-Allow-Methods'] , // Specify the allowed headers as an array
+  allowedHeaders: ['*, Access-Control-Allow-Methods,Content-Type,Authorization'] , // Specify the allowed headers as an array
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods as an array
 }));
 // Attach your routes using app.use
