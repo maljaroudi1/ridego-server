@@ -59,11 +59,11 @@ UserSchema.pre('save', async function (next) {
     }
 });
 
-app.use(cors({
-    origin: 'https://car-rental-rentgo.vercel.app',
-    allowedHeaders: 'Content-Type,Authorization',
-    methods: ['POST', 'GET', 'PUT', 'DELETE'], // Specify the allowed methods as an array
-}));
+// app.use(cors({
+//     origin: 'https://car-rental-rentgo-maljaroudi2000.vercel.app',
+//     allowedHeaders: 'Content-Type,Authorization',
+//     methods: ['POST', 'GET', 'PUT', 'DELETE'], // Specify the allowed methods as an array
+// }));
 
 // Register a user (POST request)
 app.post('/customerinfo/register', async (req, res) => {

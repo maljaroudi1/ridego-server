@@ -45,11 +45,11 @@ export default function Register() {
     } else if (confirmPassword !== password) {
       toast.warn('Passwords do not match!');
     } else {
-      const checkUser = await axios.get(`https://car-rental-rentgo.vercel.app/customerinfo/customer-infos?email=${email}`);
+      const checkUser = await axios.get(`https://car-rental-rentgo-maljaroudi2000.vercel.app/customerinfo/customer-infos?email=${email}`);
       if (checkUser.data.exists) {
         toast.error('User Already Exists!');
       } else {
-        const response = await axios.post('https://car-rental-rentgo.vercel.app/customerinfo/customer-info', {
+        const response = await axios.post('https://car-rental-rentgo-maljaroudi2000.vercel.app/customerinfo/customer-info', {
           name,
           email,
           phone,
