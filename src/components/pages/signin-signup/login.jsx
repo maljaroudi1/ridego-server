@@ -64,9 +64,6 @@ const handleLogin = async (e) => {
         },
       });
       // Handle the response as needed
-    } catch (error) {
-      // Handle errors
-    }
       if (response.data.token) {
         toast.success('Login successful');
         setNotActive('active-progress');
