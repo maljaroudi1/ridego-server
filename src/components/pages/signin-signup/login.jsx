@@ -49,11 +49,28 @@ const handleLogin = async (e) => {
   } else if (!emailRegex.test(email)) {
     toast.error('Invalid Email!');
   } else {
+// Check if a user exists route
     try {
-      const response = await axios.post('https://car-rental-rentgo.vercel.app/customerinfo/customer-infos', {
+      const response = await axios.get('https://car-rental-rentgo.vercel.app/customerinfo/check', {
+        params: {
+          email,
+        },
+      });
+      // Handle the response as needed
+    } catch (error) {
+      // Handle errors
+    }
+
+    // Login route
+    try {
+      const response = await axios.post('https://car-rental-rentgo.vercel.app/customerinfo/login', {
         email,
         password,
       });
+      // Handle the response as needed
+    } catch (error) {
+      // Handle errors
+    }
       if (response.data.token) {
         toast.success('Login successful');
         setNotActive('active-progress');
