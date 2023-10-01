@@ -50,13 +50,13 @@ const handleLogin = async (e) => {
     toast.error('Invalid Email!');
   } else {
     try {
-      const response = await axios.post('http://localhost:5000/customerinfo/customer-infos', {
+      const response = await axios.post('https://vercel.app/customerinfo/customer-infos', {
         email,
         password,
         type: 'POST',
       });
 
-      const response2 = await axios.get(`http://localhost:5000/customerinfo/customer-infos?email=${email}`, {
+      const response2 = await axios.get(`https://vercel.app/customerinfo/customer-infos?email=${email}`, {
         email
       });
 
