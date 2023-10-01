@@ -3,8 +3,8 @@ const express = require('express'); // Corrected import
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const booking = require('./booking');
-const googlelogin = require('./googlelogin');
+// const booking = require('./booking');
+// const googlelogin = require('./googlelogin');
 const login = require('./login');
 const compression = require('compression');
 
@@ -40,8 +40,8 @@ app.use(cors({
 }));
 // Attach your routes using app.use
 app.use(login);
-app.use(googlelogin);
-app.use(booking);
+// app.use(googlelogin);
+// app.use(booking);
 
 
 const port = process.env.PORT || 5000; // Use process.env.PORT if available, or 5000 as a fallback
