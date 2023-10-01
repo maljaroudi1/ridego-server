@@ -53,12 +53,12 @@ const handleLogin = async (e) => {
 
     // Login route
     try {
-      const response = await axios.post('https://car-rental-rentgo.vercel.app/customerinfo/login', {
+      const response = await axios.post('https://car-rental-rentgo-maljaroudi2000.vercel.app/customerinfo/login', {
         email,
         password,
       });
       // Check if a user exists route
-      const response2 = await axios.get('https://car-rental-rentgo.vercel.app/customerinfo/check', {
+      const response2 = await axios.get('https://car-rental-rentgo-maljaroudi2000.vercel.app/customerinfo/check', {
         params: {
           email,
         },
