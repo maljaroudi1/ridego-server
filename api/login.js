@@ -85,9 +85,9 @@ app.post('/customerinfo/customer-infos', async (req, res) => {
       return res.status(401)
       .json({ error: 'Invalid email or password.' });
     } else {
-      //  // Generate and send an authentication token if needed
-      //   res.json({ token });
-      res.json({ email: 'Success'})
+       // Generate and send an authentication token if needed
+        res.json({ token });
+
     }
   } catch (error) {
     console.error(error);

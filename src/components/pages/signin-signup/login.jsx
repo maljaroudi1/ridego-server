@@ -53,6 +53,7 @@ const handleLogin = async (e) => {
       const response = await axios.post('https://car-rental-rentgo.vercel.app/customerinfo/customer-infos', {
         email,
         password,
+        type: 'POST',
       });
       if (response.data.token) {
         toast.success('Login successful');
