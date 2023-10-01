@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const compression = require('compression');
+// require('dotenv').config();
 app.use(compression());
 
 
@@ -12,7 +13,7 @@ app.use(compression());
 
 
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 65532;
 
 const payload = {
   userId: 1
