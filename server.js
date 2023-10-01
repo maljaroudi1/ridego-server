@@ -4,7 +4,7 @@ const bodyParser = require('express').json;
 const bcrypt = require("bcrypt");
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
+
 const axios = require('axios')
 const compression = require('compression');
 app.use(compression());
